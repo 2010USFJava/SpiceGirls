@@ -31,27 +31,26 @@ private UserService uServ;
 	public long getNumberOfPosts() { //for likes
 		return pRepo.count();
 	}
-	
+	public void addPost(Post post) {
+		//need logic
+	}
+	public List<Post> getPostsByUser(User user){
+		return pRepo.findAllByUser(uServ.getUser(user.getUserId()));	
+	}
+	//we might not even need the rest of these methods 
 	public Post getPostById(int id) {
 		post = pRepo.findByPostId(id);
 		return post;
 	}
 	
-	public void addPost(Post post) {
-		//need logic
-	}
 	
 	public void updatePost(Post post) {
-	//need logic
+	//need logic 
 	}
 	
 	public void deletePost(int id) {
 		pRepo.deleteById(id);
 	}
-	
-	
-	public List<Post> getPostsByUser(User user){
-		return pRepo.findAllByUser(uServ.getUser(user.getUserId()));	
-	}
+
 	
 }
