@@ -53,8 +53,5 @@ public class UserService {
 		if(user==null) return true;
 		return false;
 	}
-	   public User getUser(int id) {
-	        Optional search = uRepo.findById(id);
-	        return (search.isPresent()) ? (User) search.get() : null;
-	    }
+
 }

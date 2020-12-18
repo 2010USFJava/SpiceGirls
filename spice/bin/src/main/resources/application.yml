@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://spice.cagd9qgsp3uo.us-east-2.rds.amazonaws.com:5432/projectspice
+    url: jdbc:postgresql://spice.cagd9qgsp3uo.us-east-2.rds.amazonaws.com:5432/spice
     username: spicegirls
     password: revature
     driver-class-name: org.postgresql.Driver
