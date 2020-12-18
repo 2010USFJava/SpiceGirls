@@ -8,6 +8,4 @@ import com.revature.models.User;
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
 
-	public User findByUsername(String username);
-	public User findByFirstName(String firstName);
 }

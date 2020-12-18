@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
-@RestController //could also user controller but we are using rest as well
+@RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {
 
