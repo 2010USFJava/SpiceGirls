@@ -3,6 +3,7 @@ package com.revature.models;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 public class User {
 	
@@ -18,8 +19,12 @@ public class User {
 	private String bio;
 	@Column(name="profile_pic")
 	private String profilePicture;
+	
+	
+	@OneToOne
 	@Column(name="username", nullable=false)
 	private String username;
+	@OneToOne
 	@Column(name="password", nullable=false)
 	private String password;
 	
