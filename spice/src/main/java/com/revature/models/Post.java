@@ -28,7 +28,7 @@ public class Post {
 	@CreationTimestamp
 	private Date timeStamp;
 	private String image;
-	
+	private int likeCount;
 
 
 	public Post() {
@@ -91,6 +91,16 @@ public class Post {
 	public String toString() {
 		return "Post [post_id=" + post_id + ", user_id=" + user_id + ", post=" + post + ", timeStamp=" + timeStamp
 				+ ", image=" + image + "]";
+	}
+
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 	
 

@@ -30,6 +30,11 @@ public class UserService {
 		Optional<User> _user=uRepo.findById(id);
 		return _user.get();
 	}
+	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
+	public List<User> getByFirstName(String name) {
+		//List<User> _user=uRepo.findByFirstName(name);
+		return (List<User>) uRepo.findByFirstName(name);
+	}
  
 
 	@Transactional
