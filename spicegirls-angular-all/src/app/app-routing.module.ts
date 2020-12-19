@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'user-login', component: UserLoginComponent},
   {path: 'feed', component: FeedComponent},
   {path: 'user-friend-profile', component: UserFriendProfileComponent},
-  {path: 'user-friend', component: UserProfileComponent},
+  {path: 'user-profile', component: UserProfileComponent},
   {path: '', redirectTo:'/feed', pathMatch: 'full'}
 ];
 
