@@ -44,7 +44,7 @@ public class UserController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User addCard(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
+	public User addUser(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
 		System.out.println(newUser);
 		User addedUser= uServ.add(newUser);
 		return addedUser;
