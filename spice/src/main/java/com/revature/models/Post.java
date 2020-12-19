@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.util.Date;
+<<<<<<< HEAD
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
-
 
 @Entity
 @Table(name = "posts")
@@ -101,6 +101,7 @@ public class Post {
 
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
+
 	}
 	
 

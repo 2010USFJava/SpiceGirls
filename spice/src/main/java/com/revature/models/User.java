@@ -1,5 +1,6 @@
 package com.revature.models;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -46,7 +47,6 @@ public class User {
 		this.lastName = lastName;
 		this.bio = bio;
 		this.profilePicture = profilePicture;
-
 	}
 
 	public int getUserId() {
@@ -109,6 +109,7 @@ public class User {
 	public String toString() {
 		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
 				+ ", profilePicture=" + profilePicture + "]";
+
 	}
 	
 	
