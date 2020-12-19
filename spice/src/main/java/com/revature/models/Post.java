@@ -1,7 +1,7 @@
 package com.revature.models;
 
 import java.util.Date;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
