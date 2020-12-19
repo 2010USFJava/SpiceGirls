@@ -23,6 +23,7 @@ private PostRepository pRepo;
 	public PostService(PostRepository postRepo) {
 		this.pRepo=postRepo;
 	}
+
 	
 	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
 	public List<Post> getAll(){
@@ -57,5 +58,6 @@ private PostRepository pRepo;
 		if(post==null) return true;
 		return false;
 	}
+
 
 }
