@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8088")
 @RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {
@@ -33,7 +33,6 @@ public class UserController {
 	public List<User> getAllUsers() {
 		return this.uServ.getAll(); //get request to /users come here 
 	}
-
 	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
 	public List<User> findByFirstName(String name) {
 		return this.uServ.getByFirstName(name); //get request to /users come here
@@ -47,7 +46,7 @@ public class UserController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User addCard(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
+	public User addUser(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
 		System.out.println(newUser);
 		User addedUser= uServ.add(newUser);
 		return addedUser;

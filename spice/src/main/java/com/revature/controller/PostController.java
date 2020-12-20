@@ -18,19 +18,19 @@ import com.revature.repository.PostRepository;
 @RestController
 @RequestMapping("/post")
 public class PostController {
-	
-	@Autowired
-	private PostRepository postRepo;
-	
-	@GetMapping("/post")
-	public List<Post> getAllPosts(){
-		return postRepo.findAll();
-	}
-	
-	public ResponseEntity<Post> getPostById(@PathVariable(value="post_id") int post_id)
-	throws ResourceNotFoundException{
-		Post post = postRepo.findById(post_id).orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
-		return ResponseEntity.ok().body(post);
-	}
-	
+    
+    @Autowired
+    private PostRepository postRepo;
+    
+    @GetMapping("/post")
+    public List<Post> getAllPosts(){
+        return postRepo.findAll();
+    }
+    
+    public ResponseEntity<Post> getPostById(@PathVariable(value="post_id") int post_id)
+    throws ResourceNotFoundException{
+        Post post = postRepo.findById(post_id).orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
+        return ResponseEntity.ok().body(post);
+    }
+    
 }

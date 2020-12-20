@@ -2,10 +2,8 @@ package com.revature.models;
 
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -14,33 +12,33 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-@Component
+
+
 @Entity
 @Table(name = "posts")
 public class Post {
 
 	@Id
-	@Column(name="post_id")
-	@GeneratedValue
-	private int post_id;
-	@Column(name="user_id")
-	private int user_id;
-	@Column(name="post")
-	private String post;
+    @Column(name="post_id")
+    @GeneratedValue
+    private int post_id;
+    @Column(name="user_id")
+    private int user_id;
+    @Column(name="post")
+    private String post;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	@Column(name="timestamp")
-	private Date timeStamp;
-	@Lob
-	@Column(name="image")
-	private byte[] image;
-	@Column(name="like_count")
-	private int likeCount;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Column(name="timestamp")
+    private Date timeStamp;
+    @Lob
+    @Column(name="image")
+    private byte[] image;
+    @Column(name="like_count")
+    private int likeCount;
+
 
 	public Post() {
 		super();
