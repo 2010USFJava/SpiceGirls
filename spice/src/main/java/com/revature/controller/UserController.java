@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.User;
+import com.revature.repository.UserRepository;
 import com.revature.services.UserService;
+
+
+@CrossOrigin(origins = "http://localhost:4200")
+
 
 
 @RestController //could also use controller but we are using rest as well
@@ -22,16 +28,19 @@ import com.revature.services.UserService;
 public class UserController {
 
 	private UserService uServ;
+	@Autowired
+	private UserRepository userRepo;
 	
 	@Autowired
 	public UserController(UserService userService) {
 		this.uServ=userService;
 	}
+	   @GetMapping("/list")
+	    public List<User> getAllUsers(){
+	        return userRepo.findAll();
+	    }
 	
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE) 
-	public List<User> getAllUsers() {
-		return this.uServ.getAll(); //get request to /users come here 
-	}
+
 
 	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
 	public List<User> findByFirstName(String name) {
@@ -46,7 +55,7 @@ public class UserController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User addCard(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
+	public User addUser(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
 		System.out.println(newUser);
 		User addedUser= uServ.add(newUser);
 		return addedUser;
