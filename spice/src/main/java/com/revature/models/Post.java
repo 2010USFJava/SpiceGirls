@@ -29,10 +29,6 @@ public class Post {
     @Column(name="post")
     private String post;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    @Column(name="timestamp")
-    private Date timeStamp;
     @Lob
     @Column(name="image")
     private byte[] image;
@@ -46,12 +42,11 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, int user_id, String post, Date timeStamp, byte[] image) {
+	public Post(int post_id, int user_id, String post, byte[] image) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
 		this.post = post;
-		this.timeStamp = timeStamp;
 		this.image = image;
 	}
 
@@ -80,13 +75,6 @@ public class Post {
 		this.image = image;
 	}
 
-	public Date getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
-	}
 
 	public int getUserId() {
 		return user_id;
@@ -98,8 +86,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post_id + ", user_id=" + user_id + ", post=" + post + ", timeStamp=" + timeStamp
-				+ ", image=" + image + "]";
+		return "Post [post_id=" + post_id + ", user_id=" + user_id + ", image=" + image + "]";
 	}
 
 
