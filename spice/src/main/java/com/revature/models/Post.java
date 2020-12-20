@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,18 +21,23 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Post {
 
 	@Id
-	@Column
-	@GeneratedValue
-	private int post_id;
-	private int user_id;
-	private String post;
+    @Column(name="post_id")
+    @GeneratedValue
+    private int post_id;
+    @Column(name="user_id")
+    private int user_id;
+    @Column(name="post")
+    private String post;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date timeStamp;
-	@Column(name="image")
-	private Byte[] image;
-	private int likeCount;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Column(name="timestamp")
+    private Date timeStamp;
+    @Lob
+    @Column(name="image")
+    private byte[] image;
+    @Column(name="like_count")
+    private int likeCount;
 
 
 	public Post() {
@@ -40,7 +46,7 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, int user_id, String post, Date timeStamp, Byte[] image) {
+	public Post(int post_id, int user_id, String post, Date timeStamp, byte[] image) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -66,11 +72,11 @@ public class Post {
 		this.post = post;
 	}
 
-	public Byte[] getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Byte[] image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
