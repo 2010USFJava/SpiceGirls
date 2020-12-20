@@ -5,7 +5,9 @@ Hannah, Anna, Dez, Isa, Sandra
 Angular Master Template instructions:
 
 [1] Download the folder: spicegirls-angular-all
+
 [2] Import folder into Visual Studio
+
 [3] Run the following terminal commands in Visual Studio's Terminal:
 
 - Install dependencies
