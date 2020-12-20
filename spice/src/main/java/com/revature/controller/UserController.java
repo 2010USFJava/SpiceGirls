@@ -17,11 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
-<<<<<<< HEAD
-
-=======
 @CrossOrigin(origins = "http://localhost:8088")
->>>>>>> ffaaed80724c28716895299951a24b88117e9f95
 @RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {

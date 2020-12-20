@@ -14,12 +14,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> ffaaed80724c28716895299951a24b88117e9f95
 @Entity
 @Table(name = "posts")
 public class Post {

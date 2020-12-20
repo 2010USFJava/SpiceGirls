@@ -24,7 +24,7 @@ public class PostController {
     
     @GetMapping("/post")
     public List<Post> getAllPosts(){
-        return postRepo.findAll();
+        return (List<Post>) postRepo.findAll();
     }
     
     public ResponseEntity<Post> getPostById(@PathVariable(value="post_id") int post_id)
