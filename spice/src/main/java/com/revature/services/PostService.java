@@ -1,56 +1,63 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Post;
-import com.revature.models.User;
+
 import com.revature.repository.PostRepository;
+
 
 
 @Service
 public class PostService {
 	
 private PostRepository pRepo;
-private UserService uServ;
 	
 	@Autowired
 	public PostService(PostRepository postRepo) {
 		this.pRepo=postRepo;
 	}
-	@Autowired
-	private Post post;
-	
-	
-	public List<Post> getAllPosts(){
-		return pRepo.findAll();
-	}
-	
-	public long getNumberOfPosts() { //for likes
-		return pRepo.count();
-	}
-	public void addPost(Post post) {
-		//need logic
-	}
-	public List<Post> getPostsByUser(User user){
-		return pRepo.findAllByUser(uServ.getUser(user.getUserId()));	
-	}
-	//we might not even need the rest of these methods 
-	public Post getPostById(int id) {
-		post = pRepo.findByPostId(id);
-		return post;
-	}
-	
-	
-	public void updatePost(Post post) {
-	//need logic 
-	}
-	
-	public void deletePost(int id) {
-		pRepo.deleteById(id);
-	}
 
 	
+	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
+	public List<Post> getAll(){
+		return (List<Post>) pRepo.findAll();
+	}
+	
+	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
+	public Post getById(int id) {
+		Optional<Post> _post=pRepo.findById(id);
+		return _post.get();
+	}
+ 
+
+	@Transactional
+	//we probably need to add each field ex. newUser.getUserId().equals("")
+	public Post add(Post newPost) {
+		if(newPost.getPost().equals("")|| newPost.getImage().equals("")) return null;
+		if(newPost.getPost()==null|| newPost.getImage()==null) return null;
+		return pRepo.save(newPost);
+	}
+	@Transactional
+	public Post update(Post updatedPost ) {
+		if(updatedPost.getPost().equals("")|| updatedPost.getImage().equals("")) return null;
+		if(updatedPost.getPost()==null|| updatedPost.getImage()==null) return null;
+		return pRepo.save(updatedPost);
+	}
+	
+	@Transactional
+	public boolean delete(int id) {
+		pRepo.deleteById(id);
+		Post post=getById(id);
+		if(post==null) return true;
+		return false;
+	}
+
+
 }

@@ -1,18 +1,12 @@
 package com.revature.repository;
 
-import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.revature.models.Post;
-import com.revature.models.User;
 
+@Repository
 public interface PostRepository extends CrudRepository<Post, Integer> {
-
-	public Post findByPostId(int id);
-
-	public List<Post> findAll();
-
-	public List<Post> findAllByUser(User user);
 
 }

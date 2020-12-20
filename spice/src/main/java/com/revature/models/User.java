@@ -1,10 +1,19 @@
 package com.revature.models;
 
+//<<<<<<< HEAD
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="users")
 public class User {
 	
 	@Id
@@ -19,13 +28,10 @@ public class User {
 	private String bio;
 	@Column(name="profile_pic")
 	private String profilePicture;
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	 private List<Post> posts;
 	
-	
-	@OneToOne
-	@Column(name="username", nullable=false)
 	private String username;
-	@OneToOne
-	@Column(name="password", nullable=false)
 	private String password;
 	
 	public User() {
@@ -41,8 +47,6 @@ public class User {
 		this.lastName = lastName;
 		this.bio = bio;
 		this.profilePicture = profilePicture;
-		this.username = username;
-		this.password = password;
 	}
 
 	public int getUserId() {
@@ -104,7 +108,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
-				+ ", profilePicture=" + profilePicture + ", username=" + username + ", password=" + password + "]";
+				+ ", profilePicture=" + profilePicture + "]";
+
 	}
 	
 	
