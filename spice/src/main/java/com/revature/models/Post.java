@@ -2,11 +2,13 @@ package com.revature.models;
 
 import java.util.Date;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import javax.persistence.Lob;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,17 +20,23 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Post {
 
 	@Id
-	@Column
-	@GeneratedValue
-	private int post_id;
-	private int user_id;
-	private String post;
+    @Column(name="post_id")
+    @GeneratedValue
+    private int post_id;
+    @Column(name="user_id")
+    private int user_id;
+    @Column(name="post")
+    private String post;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date timeStamp;
-	private String image;
-	private int likeCount;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    @Column(name="timestamp")
+    private Date timeStamp;
+    @Lob
+    @Column(name="image")
+    private byte[] image;
+    @Column(name="like_count")
+    private int likeCount;
 
 
 	public Post() {
@@ -37,7 +45,8 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, int user_id, String post, Date timeStamp, String image) {
+	public Post(int post_id, int user_id, String post, Date timeStamp, byte[] image) {
+
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -63,11 +72,11 @@ public class Post {
 		this.post = post;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -101,7 +110,6 @@ public class Post {
 
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
-
 	}
 	
 

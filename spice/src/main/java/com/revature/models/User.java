@@ -26,19 +26,22 @@ public class User {
 	@Column(name="bio")
 	private String bio;
 	@Column(name="profile_pic")
-	private String profilePicture;
+	private Byte[] profilePicture;
+	//private String profilePicture;
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	 private List<Post> posts;
+
 	
-	private String username;
-	private String password;
+	
+	
+
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int user_id, String firstName, String lastName, String bio, String profilePicture, String username,
+	public User(int user_id, String firstName, String lastName, String bio, Byte[] profilePicture, String username,
 			String password) {
 		super();
 		this.user_id = user_id;
@@ -80,35 +83,20 @@ public class User {
 		this.bio = bio;
 	}
 
-	public String getProfilePicture() {
+	public Byte[] getProfilePicture() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(String profilePicture) {
+	public void setProfilePicture(Byte[] profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 
-	public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
 				+ ", profilePicture=" + profilePicture + "]";
-
 	}
 	
 	
