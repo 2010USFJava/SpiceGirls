@@ -16,7 +16,7 @@ import com.revature.repository.PostRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/spice")
 public class PostController {
     
     @Autowired

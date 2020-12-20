@@ -15,24 +15,31 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.User;
+import com.revature.repository.UserRepository;
 import com.revature.services.UserService;
 
-@CrossOrigin(origins = "http://localhost:8088")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {
 
 	private UserService uServ;
+	@Autowired
+	private UserRepository userRepo;
 	
 	@Autowired
 	public UserController(UserService userService) {
 		this.uServ=userService;
 	}
+	   @GetMapping("/list")
+	    public List<User> getAllUsers(){
+	        return userRepo.findAll();
+	    }
 	
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE) 
-	public List<User> getAllUsers() {
-		return this.uServ.getAll(); //get request to /users come here 
-	}
+	//@GetMapping(value="/list") 
+	//public List<User> getAllUsers() {
+	//	return this.uServ.getAll(); //get request to /users come here 
+	//}
 	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
 	public List<User> findByFirstName(String name) {
 		return this.uServ.getByFirstName(name); //get request to /users come here

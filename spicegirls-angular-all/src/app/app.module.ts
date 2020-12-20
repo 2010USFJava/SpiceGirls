@@ -14,6 +14,8 @@ import { LikePostComponent } from './like-post/like-post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     SearchUserComponent,
     LikePostComponent,
     PostListComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    UserListComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
