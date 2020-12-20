@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 
+
+
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -27,7 +29,8 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date timeStamp;
-	private String image;
+	@Column(name="image")
+	private Byte[] image;
 	private int likeCount;
 
 
@@ -37,7 +40,7 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, int user_id, String post, Date timeStamp, String image) {
+	public Post(int post_id, int user_id, String post, Date timeStamp, Byte[] image) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -63,11 +66,11 @@ public class Post {
 		this.post = post;
 	}
 
-	public String getImage() {
+	public Byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Byte[] image) {
 		this.image = image;
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.User;
 import com.revature.services.UserService;
 
+@CrossOrigin(origins = "http://localhost:8088")
 @RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {
