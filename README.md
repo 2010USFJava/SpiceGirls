@@ -23,6 +23,7 @@ Angular Master Template instructions:
    ng serve -o
 
   http://localhost:4200/post 
+  
   http://localhost:4200/list
 
 
