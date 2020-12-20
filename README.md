@@ -1,6 +1,4 @@
 # SpiceGirls
-Hannah, Anna, Dez, Isa, Sandra
-
 
 Angular Master Template instructions:
 
@@ -10,13 +8,17 @@ Angular Master Template instructions:
 
 [3] Run the following terminal commands in Visual Studio's Terminal:
 
-- Install dependencies
+- Install dependencies:
+
   $ npm install @fortawesome/fontawesome-svg-core
+  
   $ npm install @fortawesome/free-solid-svg-icons
+  
   $ npm install @fortawesome/angular-fontawesome@0.5.0
 
-- Run application
-$ ng serve -o
+- Run application:
+
+  $ ng serve -o
 
   http://localhost:4200/feed
 
