@@ -18,7 +18,11 @@ import com.revature.models.User;
 import com.revature.repository.UserRepository;
 import com.revature.services.UserService;
 
+
 @CrossOrigin(origins = "http://localhost:4200")
+
+
+
 @RestController //could also use controller but we are using rest as well
 @RequestMapping("/users") //takes the place of url pattern inside servlet 
 public class UserController {
@@ -36,10 +40,8 @@ public class UserController {
 	        return userRepo.findAll();
 	    }
 	
-	//@GetMapping(value="/list") 
-	//public List<User> getAllUsers() {
-	//	return this.uServ.getAll(); //get request to /users come here 
-	//}
+
+
 	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
 	public List<User> findByFirstName(String name) {
 		return this.uServ.getByFirstName(name); //get request to /users come here
