@@ -16,7 +16,7 @@ import com.revature.repository.PostRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/spice")
 public class PostController {
     
     @Autowired
@@ -24,13 +24,14 @@ public class PostController {
     
     @GetMapping("/post")
     public List<Post> getAllPosts(){
-        return postRepo.findAll();
+        return (List<Post>) postRepo.findAll();
     }
-    
-    public ResponseEntity<Post> getPostById(@PathVariable(value="post_id") int post_id)
+    @GetMapping("/post/{pid}")
+    public ResponseEntity<Post> getPostById(@PathVariable(value="pid") int post_id)
     throws ResourceNotFoundException{
         Post post = postRepo.findById(post_id).orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
         return ResponseEntity.ok().body(post);
     }
+    
     
 }

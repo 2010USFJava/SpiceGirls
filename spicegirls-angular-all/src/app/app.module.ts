@@ -12,6 +12,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { LikePostComponent } from './like-post/like-post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserRegisterComponent,
     NavbarComponent,
     SearchUserComponent,
-    LikePostComponent
+    LikePostComponent,
+    PostListComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
