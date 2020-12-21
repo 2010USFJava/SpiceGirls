@@ -10,17 +10,17 @@ Angular Master Template instructions:
 
 - Install dependencies:
 
-   npm install bootstrap jquery --save
+   `npm install bootstrap jquery --save`
    
-   npm install @fortawesome/fontawesome-svg-core
+   `npm install @fortawesome/fontawesome-svg-core`
   
-   npm install @fortawesome/free-solid-svg-icons
+   `npm install @fortawesome/free-solid-svg-icons`
   
-   npm install @fortawesome/angular-fontawesome@0.5.0
+   `npm install @fortawesome/angular-fontawesome@0.5.0`
 
 - Run application:
 
-   ng serve -o
+   `ng serve -o`
 
   http://localhost:4200/post 
   
