@@ -34,5 +34,6 @@ Angular Master Template instructions:
   
   http://localhost:8088/login/username/{username}
 
+[4] To update use `npm install` to make sure you have everything up to date that you need for development.
 
 
