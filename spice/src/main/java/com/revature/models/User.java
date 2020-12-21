@@ -1,6 +1,5 @@
 package com.revature.models;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.CascadeType;
