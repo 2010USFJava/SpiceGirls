@@ -18,12 +18,12 @@ public class SessionController {
 	
 	
 	@GetMapping(value = "login", produces = "application/json")
-	public static String login(HttpServletRequest req) {
+	public @ResponseBody String login(HttpServletRequest req) {
 		
 		HttpSession session = req.getSession();
 		
-		//String userName=req.getParameter("username");
-		//String passWord=req.getParameter("password");
+		String userName=req.getParameter("username");
+		String passWord=req.getParameter("password");
 		
 		Login incomingUser = new Login(userName, passWord);
 		
@@ -34,7 +34,7 @@ public class SessionController {
 	
 	
 	@GetMapping(value = "logout", produces = "application/json")
-	public static String logout(HttpSession session) {
+	public @ResponseBody String logout(HttpSession session) {
 		
 		session.invalidate();
 

@@ -3,9 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AjaxServiceService } from '../ajax-service.service';
+import { AjaxServiceService } from '../ajax-service.sevrice';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,34 +11,32 @@ import { Observable } from 'rxjs';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-export class UserLoginComponent implements OnInit {
+export class UserLoginComponent implements OnInit { 
+  //userDetails = '';
+
+  loginMessage = '';
+
+  //logoutMessage = '';
+
+
+
   login: Login = new Login();
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
-) { }
+  constructor(private myAjax: AjaxServiceService) { }
 
-ngOnInit() {
-    sessionStorage.setItem('token', '');
+ngOnInit(): void {
 }
 onSubmit() {
-  let url = 'http://localhost:8080/login';
-  this.http.post<Observable<boolean>>(url, {
-    userName: this.login.username,
-    password: this.login.password
-}).subscribe(isValid => {
-    if (isValid) {
-        sessionStorage.setItem(
-          'token', 
-          btoa(this.login.username + ':' + this.login.password)
-        );
-	this.router.navigate(['']);
-    } else {
-        alert("Authentication failed.")
+  this.myAjax.infoRequest().subscribe(
+
+    data => {
+      console.log(data);
+
+      const ourField = 'username';
+      this.loginMessage = this.loginMessage + ' ' + data[ourField];
     }
-});
+
+  )
 
 }
 

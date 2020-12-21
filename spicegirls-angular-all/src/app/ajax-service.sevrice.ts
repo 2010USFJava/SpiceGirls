@@ -17,7 +17,7 @@ export class AjaxServiceService {
 
   loginRequest(): Observable<string>{
 
-    return this.myHttpClient.get<string>('http://localhost:9090/login',
+    return this.myHttpClient.get<string>('http://localhost:8088/login',
     {withCredentials: true}
     );
     
@@ -25,14 +25,14 @@ export class AjaxServiceService {
 
   logoutRequest(): Observable<string>{
 
-    return this.myHttpClient.get<string>('http://localhost:9090/logout',
+    return this.myHttpClient.get<string>('http://localhost:8088/logout',
     {withCredentials: true}
     );
 
   }
 
   infoRequest():  Observable<string>{
-    return this.myHttpClient.get<string>('http://localhost:9090/getCurrentInfo',
+    return this.myHttpClient.get<string>('http://localhost:8088/user',
     {withCredentials: true}
     );
   }
