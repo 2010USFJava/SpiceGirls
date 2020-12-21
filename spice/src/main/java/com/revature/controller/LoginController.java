@@ -43,17 +43,25 @@ public class LoginController {
 	        return lRepo.findAll();
 	    }
 
-	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Login> findByUsername(String username) {
-//		return lRepo.findByUsername(name);
-		return this.lServe.getByUsername(username); // get request to /users come here
-	}
+//	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Login> findByUsername(String username) {
+////		return lRepo.findByUsername(name);
+//		return this.lServe.getByUsername(username); // get request to /users come here
+//	}
 
 	@GetMapping(value = "/{user_id}", produces = MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
     public ResponseEntity<Login> getLoginById(@PathVariable(value = "user_id") int login_id)
             throws ResourceNotFoundException {
             Login login = lRepo.findById(login_id)
               .orElseThrow(() -> new ResourceNotFoundException("Login not found for this id :: " + login_id));
+            return ResponseEntity.ok().body(login);
+        }
+	
+	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
+    public ResponseEntity<Login> getByUsername(@PathVariable(value = "username") String username)
+            throws ResourceNotFoundException {
+            Login login = lRepo.findByUsername(username);
+//              .orElseThrow(() -> new ResourceNotFoundException("Login not found for this username :: " + username));
             return ResponseEntity.ok().body(login);
         }
 	
