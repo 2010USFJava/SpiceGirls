@@ -89,7 +89,7 @@ public class LoginController {
         return ResponseEntity.ok(updatedLogin);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{user_id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable (value = "user_id") int user_id)
          throws ResourceNotFoundException {
         Login login = lRepo.findById(user_id)
