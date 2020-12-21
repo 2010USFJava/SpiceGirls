@@ -27,4 +27,12 @@ Angular Master Template instructions:
   http://localhost:4200/list
   
   http://localhost:4200/${id_num}
+  
+  localhost:8088/login/list
+  
+  localhost:8088/login/{id}
+  
+  localhost:8088/login/username/{username}
+
+
 
