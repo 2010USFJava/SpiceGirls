@@ -22,21 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Login;
 import com.revature.repository.LoginRepository;
-import com.revature.services.LoginService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
 
-	private LoginService lServe;
 	@Autowired
 	private LoginRepository lRepo;
 
-	@Autowired
-	public LoginController(LoginService lServe) {
-		this.lServe = lServe;
-	}
+
 	
 	   @GetMapping("/list")
 	    public List<Login> getAllUsers(){
