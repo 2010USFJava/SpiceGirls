@@ -25,5 +25,6 @@ Angular Master Template instructions:
   http://localhost:4200/post 
   
   http://localhost:4200/list
-
+  
+  http://localhost:4200/${id_num}
 
