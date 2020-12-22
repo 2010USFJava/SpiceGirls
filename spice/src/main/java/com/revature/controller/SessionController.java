@@ -12,7 +12,7 @@ import com.revature.models.Login;
 
 
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://localhost:8088" }, allowCredentials = "true")
 @RestController
 public class SessionController {
 	

@@ -15,14 +15,14 @@ export class AjaxServiceService {
   constructor(private myHttpClient: HttpClient) { }
 
 
-  loginRequest(): Observable<string>{
+  /* loginRequest(): Observable<string>{
 
     return this.myHttpClient.get<string>('http://localhost:8088/login',
     {withCredentials: true}
     );
     
   }
-
+ */
   logoutRequest(): Observable<string>{
 
     return this.myHttpClient.get<string>('http://localhost:8088/logout',

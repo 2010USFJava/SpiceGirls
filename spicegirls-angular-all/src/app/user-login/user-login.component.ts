@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../login.service';
 import { Login } from '../login';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AjaxServiceService } from '../ajax-service.sevrice';
-import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-login',
@@ -12,28 +10,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit { 
-  //userDetails = '';
-
-  loginMessage = '';
-
-  //logoutMessage = '';
-
-
-
+  username: string;
+  password: string;
   login: Login = new Login();
 
-  constructor(private myAjax: AjaxServiceService) { }
+  constructor(private myLogin:LoginService, private _route: ActivatedRoute, private _router: Router, private cookieService: CookieService) { }
 
 ngOnInit(): void {
 }
 onSubmit() {
-  this.myAjax.infoRequest().subscribe(
+  this.myLogin.getLogin(this.login.username, this.login.password).subscribe(
 
     data => {
       console.log(data);
-
-      const ourField = 'username';
-      this.loginMessage = this.loginMessage + ' ' + data[ourField];
+      this.login = data;
+      console.log(this.login.user_id)
+      this.cookieService.set('cookie', `${this.login.user_id}`)
+      console.log(this.cookieService.get('cookie'));
     }
 
   )
