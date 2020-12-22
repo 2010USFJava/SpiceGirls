@@ -10,11 +10,13 @@ import org.springframework.stereotype.Repository;
 import com.revature.models.User;
 
 @Repository
+
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	@Query(value = "SELECT * FROM users WHERE first_name=:firstName", nativeQuery = true)
 	public List<User> findByName(@Param("firstName") String name);
 	
+
 	public List<User> findByFirstName(String name);
 
 }

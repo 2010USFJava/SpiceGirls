@@ -17,6 +17,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

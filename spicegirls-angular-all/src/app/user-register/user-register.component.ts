@@ -38,4 +38,3 @@ export class UserRegisterComponent implements OnInit {
     }
     
   }
-
