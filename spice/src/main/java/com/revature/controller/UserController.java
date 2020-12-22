@@ -48,7 +48,6 @@ public class UserController {
 	public List<User> getAllUsers() {
 		return userRepo.findAll();
 	} 
-
 	@GetMapping(value = "/list/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<User>> getByName(@PathVariable(value = "name") String name) 
 		throws ResourceNotFoundException {

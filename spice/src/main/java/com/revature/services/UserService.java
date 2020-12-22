@@ -36,9 +36,7 @@ public class UserService {
 		//List<User> _user=uRepo.findByFirstName(name);
 		return (List<User>) uRepo.findByFirstName(name);
 	}
-
  
-
 	@Transactional
 	//we probably need to add each field ex. newUser.getUsername().equals("")
 	public User add(User newUser) {

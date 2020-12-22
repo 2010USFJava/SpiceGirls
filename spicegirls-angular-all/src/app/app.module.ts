@@ -14,6 +14,7 @@ import { LikePostComponent } from './like-post/like-post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { CookieService } from 'ngx-cookie-service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
@@ -39,9 +40,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
-
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
