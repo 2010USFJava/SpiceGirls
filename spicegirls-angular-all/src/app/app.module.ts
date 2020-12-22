@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { CookieService } from 'ngx-cookie-service';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { CookieService } from 'ngx-cookie-service';
     SearchUserComponent,
     LikePostComponent,
     PostListComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    UserListComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

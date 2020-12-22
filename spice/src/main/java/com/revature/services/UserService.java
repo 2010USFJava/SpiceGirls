@@ -13,6 +13,7 @@ import com.revature.repository.UserRepository;
 
 @Service
 public class UserService {
+	@Autowired
 	private UserRepository uRepo;
 	
 	@Autowired

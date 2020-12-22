@@ -24,11 +24,6 @@ public class Login {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Login(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-	
 
 	public Login(int user_id, String username, String password) {
 		super();

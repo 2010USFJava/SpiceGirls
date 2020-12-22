@@ -25,7 +25,7 @@ public class SessionController {
 		String userName=req.getParameter("username");
 		String passWord=req.getParameter("password");
 		
-		Login incomingUser = new Login(userName, passWord);
+		Login incomingUser = new Login(1, userName, passWord);
 		
 		session.setAttribute("loggedInUser", incomingUser);
 		

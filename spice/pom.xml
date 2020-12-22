@@ -26,10 +26,6 @@
 			code and copy paste loads of dependency descriptors. For example,if you want 
 			to get started using Spring and JPA for database access justinclude the spring-boot-starter-data-jpa 
 			dependency in your project, andyou are good to go. -->
-
-
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -77,6 +73,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+		<!-- Extra Dependencies Anna needs -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>2.4.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

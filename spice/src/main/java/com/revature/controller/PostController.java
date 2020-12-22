@@ -24,14 +24,13 @@ public class PostController {
     
     @GetMapping("/post")
     public List<Post> getAllPosts(){
-        return (List<Post>) postRepo.findAll();
+        return postRepo.findAll();
     }
-    @GetMapping("/post/{pid}")
-    public ResponseEntity<Post> getPostById(@PathVariable(value="pid") int post_id)
+    
+    public ResponseEntity<Post> getPostById(@PathVariable(value="post_id") int post_id)
     throws ResourceNotFoundException{
         Post post = postRepo.findById(post_id).orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
         return ResponseEntity.ok().body(post);
     }
-    
     
 }
