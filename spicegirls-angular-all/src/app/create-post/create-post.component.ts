@@ -26,6 +26,7 @@ export class CreatePostComponent implements OnInit {
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
+        this.post.likeCount = 0;
         this.post = new Post();
         this.goToList();
       },
