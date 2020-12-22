@@ -25,6 +25,7 @@ export class PostDetailsComponent implements OnInit {
     }, error => console.log(error));
   }
 
+
   list(){
     this.router.navigate(['post']);
   }

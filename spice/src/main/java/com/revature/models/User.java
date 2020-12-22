@@ -28,8 +28,8 @@ public class User {
 	private String bio;
 	@Column(name="profile_pic")
 	private Byte[] profilePicture;
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-	 private List<Post> posts;
+	//@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	// private List<Post> posts;
 	
 	
 	public User() {
@@ -45,7 +45,6 @@ public class User {
 		this.lastName = lastName;
 		this.bio = bio;
 		this.profilePicture = profilePicture;
-
 	}
 
 	public int getUserId() {
@@ -94,6 +93,7 @@ public class User {
 	public String toString() {
 		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
 				+ ", profilePicture=" + profilePicture + "]";
+
 	}
 	
 	
