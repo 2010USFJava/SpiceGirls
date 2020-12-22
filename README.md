@@ -21,6 +21,8 @@ Angular Master Template instructions:
 - Run application:
 
    `ng serve -o`
+   
+[4] Access Data Through Angular (Application Layer)
 
   http://localhost:4200/post 
   
@@ -28,12 +30,18 @@ Angular Master Template instructions:
   
   http://localhost:4200/${id_num}
   
+[5] Access Data through STS (Business Layer)
+  
+  http://localhost:8088/spice/post
+  
   http://localhost:8088/login/list
   
   http://localhost:8088/login/{id}
   
   http://localhost:8088/login/username/{username}
-
-[4] To update use `npm install` to make sure you have everything up to date that you need for development.
+  
+  http://localhost:8088/like/list
+  
+[6] To update use `npm install` to make sure you have everything up to date that you need for development.
 
 
