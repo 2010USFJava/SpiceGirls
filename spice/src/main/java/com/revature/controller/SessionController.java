@@ -1,4 +1,4 @@
-package com.revature.controller;
+/* package com.revature.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,3 +59,4 @@ public class SessionController {
 	
 
 }
+*/
