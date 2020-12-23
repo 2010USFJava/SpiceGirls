@@ -33,7 +33,7 @@ public class UserService {
 	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
 	public List<User> getByFirstName(String name) {
 		//List<User> _user=uRepo.findByFirstName(name);
-		return (List<User>) uRepo.findByFirstName(name);
+		return (List<User>) uRepo.findByName(name);
 	}
 
  
