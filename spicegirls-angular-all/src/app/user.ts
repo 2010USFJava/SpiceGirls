@@ -1,10 +1,10 @@
-
+import { Post } from './post';
 
 export class User{
-    id:number;
-    firstName:string;
+    user_id:number;
+    frstName:string;
     lastName:string;
     bio:string;
     profilePicture:any;
-    
+    posts:Post[];
 }
