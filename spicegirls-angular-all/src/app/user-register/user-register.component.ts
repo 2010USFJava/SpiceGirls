@@ -30,8 +30,9 @@ export class UserRegisterComponent implements OnInit {
   }
   save() {
     this.loginService.createLogin(this.login).subscribe(data => {
+      console.log(data)
       this.login = new Login();
-      this.goToList();
+      //this.goToList();
     });
     this.userService.registerUser(this.user).subscribe(data => {
       console.log(data)
@@ -46,7 +47,7 @@ export class UserRegisterComponent implements OnInit {
     }
     goToList() {
       this.router.navigate(['/users']);
-      this.router.navigate(['/login']);
+      //this.router.navigate(['/login']);
     }
     
   }

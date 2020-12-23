@@ -13,25 +13,30 @@ export class UserLoginComponent implements OnInit {
   username: string;
   password: string;
   login: Login = new Login();
+  public loginInvalid: boolean;
 
   constructor(private myLogin:LoginService, private _route: ActivatedRoute, private _router: Router, private cookieService: CookieService) { }
 
 ngOnInit(): void {
 }
 onSubmit() {
-  this.myLogin.getLogin(this.login.username, this.login.password).subscribe(
+  this.loginInvalid = false;
+  try {
+    this.myLogin.getLogin(this.login.username, this.login.password).subscribe(
+      data => {
+        console.log(data);
+        this.login = data;
+        console.log(this.login.userId);
+        this.cookieService.set('cookie', `${this.login.userId}`);
+        console.log(this.cookieService.get('cookie'));
+        this._router.navigate(['post']);
+      } 
+  
+    )
 
-    data => {
-      console.log(data);
-      this.login = data;
-      console.log(this.login.userId);
-      this.cookieService.set('cookie', `${this.login.userId}`);
-      console.log(this.cookieService.get('cookie'));
-      this._router.navigate(['post']);
-    }
-
-  )
-
+  } catch (err) {
+    this.loginInvalid = true;
+  }
 }
 
 /* post() {
