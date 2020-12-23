@@ -2,7 +2,7 @@ import { Post } from './post';
 
 export class User{
     user_id:number;
-    frstName:string;
+    firstName:string;
     lastName:string;
     bio:string;
     profilePicture:any;
