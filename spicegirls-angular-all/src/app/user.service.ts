@@ -16,7 +16,7 @@ private baseUrl= 'http://localhost:8088/users'
     return this.http.get(`${this.baseUrl}/${id}`);
   }
   registerUser(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/`, user);
+    return this.http.post(`${this.baseUrl}/add`, user);
 
   }
   updateUser(id:number, value: any): Observable<Object> {

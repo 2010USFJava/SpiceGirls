@@ -93,13 +93,24 @@ public class UserController {
 		User user= uServ.getById(id);
 		return user;
 	}
-
-	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User addUser(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
-		System.out.println(newUser);
-		User addedUser= uServ.add(newUser);
-		return addedUser;
-		
+	
+	
+	@PostMapping("/add")
+	public User createUser(@Valid @RequestBody User user) {
+		System.out.println(user);
+		return userRepo.save(user);
 	}
+
+
+	/*
+	 * @ResponseStatus(HttpStatus.CREATED)
+	 * 
+	 * @PostMapping(value="/add", consumes=MediaType.APPLICATION_JSON_VALUE,
+	 * produces=MediaType.APPLICATION_JSON_VALUE) public User addUser(@RequestBody
+	 * User newUser) { // @RequestBody to pull info from body of method
+	 * System.out.println(newUser); User addedUser= uServ.add(newUser); return
+	 * addedUser;
+	 * 
+	 * }
+	 */
 }

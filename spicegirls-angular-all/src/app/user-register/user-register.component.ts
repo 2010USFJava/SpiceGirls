@@ -38,8 +38,7 @@ export class UserRegisterComponent implements OnInit {
       this.save();
     }
     goToList() {
-      this.router.navigate(['/users']);
-      //this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
     }
     
   }
