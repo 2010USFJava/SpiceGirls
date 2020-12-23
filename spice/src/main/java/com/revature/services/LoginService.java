@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Login;
+import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.repository.LoginRepository;
 
 
