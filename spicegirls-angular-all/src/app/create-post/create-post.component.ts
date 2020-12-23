@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Router } from '@angular/router';
-
+import { Login } from '../login';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class CreatePostComponent implements OnInit {
   post: Post = new Post();
+  login: Login = new Login();
   submitted = false;
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private router: Router,private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,7 @@ export class CreatePostComponent implements OnInit {
       .createPost(this.post).subscribe(data => {
         console.log(data)
         this.post.likeCount =0;
+        this.cookieService.get('cookie');
         var userid = this.post.uid;
         var postid = this.post.pid;
         const post = new FormData();
