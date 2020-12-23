@@ -38,7 +38,7 @@ public class LoginController {
 		this.lServe = lServe;
 	}
 	
-	   @GetMapping("/list")
+	   @GetMapping("")
 	    public List<Login> getAllUsers(){
 	        return lRepo.findAll();
 	    }
