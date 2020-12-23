@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,6 +26,10 @@ public class User {
 	private String firstName;
 	@Column(name="last_name", nullable=false)
 	private String lastName;
+	@Column(name="username")
+	private String username;
+	@Column(name="password")
+	private String password;
 	@Column(name="bio")
 	private String bio;
 	@Column(name="profile_pic")
@@ -44,6 +49,8 @@ public class User {
 		this.user_id = user_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
 		this.bio = bio;
 		this.profilePicture = profilePicture;
 	}
@@ -89,12 +96,27 @@ public class User {
 	}
 
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
-				+ ", profilePicture=" + profilePicture + "]";
-
+		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", bio=" + bio + ", profilePicture="
+				+ Arrays.toString(profilePicture) + ", posts=" + posts + "]";
 	}
 	
 	
