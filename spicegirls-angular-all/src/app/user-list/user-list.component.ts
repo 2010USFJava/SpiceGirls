@@ -13,13 +13,17 @@ import {User} from "../user";
 export class UserListComponent implements OnInit {
 
   users: Observable<User[]>;
+
   name: string;
+
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.reloadData();
+
     this.name='';
+
   }
   reloadData() {
     this.users = this.userService.getUserList();
@@ -36,6 +40,7 @@ export class UserListComponent implements OnInit {
     userDetails(id: number) {
       this.router.navigate(['details', id])
     }
+
     searchUser(): void {
       this.userService.findByName(this.name).subscribe(
         user => {
@@ -48,6 +53,7 @@ export class UserListComponent implements OnInit {
     onSubmit() {
       this.searchUser();
     }
+
     
   }
 

@@ -23,16 +23,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Login;
 import com.revature.repository.LoginRepository;
+import com.revature.services.LoginService;
 
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials ="true")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
 
+	private LoginService lServe;
 	@Autowired
 	private LoginRepository lRepo;
 
-
+	@Autowired
+	public LoginController(LoginService lServe) {
+		this.lServe = lServe;
+	}
 	
 	   @GetMapping("")
 	    public List<Login> getAllUsers(){
@@ -44,11 +49,11 @@ public class LoginController {
 	   
 	   
 
-//	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public List<Login> findByUsername(String username) {
-////		return lRepo.findByUsername(name);
-//		return this.lServe.getByUsername(username); // get request to /users come here
-//	}
+	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Login> findByUsername(String username) {
+//		return lRepo.findByUsername(name);
+		return this.lServe.getByUsername(username); // get request to /users come here
+	}
 
 	@GetMapping(value = "/{user_id}", produces = MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
     public ResponseEntity<Login> getLoginById(@PathVariable(value = "user_id") int login_id)
@@ -58,6 +63,7 @@ public class LoginController {
             return ResponseEntity.ok().body(login);
         }
 	
+
 	@PostMapping("/verify")
 	public Login verifyLogin(@Valid @RequestBody Login loginUser) throws ResourceNotFoundException {
 		System.out.println(loginUser.getUsername());
@@ -85,6 +91,7 @@ public class LoginController {
         }
 
 	
+
 
 //	@ResponseStatus(HttpStatus.CREATED)
 //	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -114,7 +121,7 @@ public class LoginController {
         return ResponseEntity.ok(updatedLogin);
     }
     
-    @DeleteMapping("/{user_id}")
+    @DeleteMapping("/{id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable (value = "user_id") int user_id)
          throws ResourceNotFoundException {
         Login login = lRepo.findById(user_id)

@@ -11,6 +11,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
+
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
   {path: 'login', component: UserLoginComponent},
@@ -20,12 +21,14 @@ const routes: Routes = [
   {path: 'post', component: PostListComponent},
   {path: 'add', component: CreatePostComponent},
   {path: 'details/:pid', component: PostDetailsComponent},
- 
+
   {path: 'profile/:id', component: UserProfileComponent},
   {path: 'update/:id', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
+
   {path: 'details/:id', component: UserListComponent},
+
 
   {path: '', redirectTo:'/post', pathMatch: 'full'}
 ];

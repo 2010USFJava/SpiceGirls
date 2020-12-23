@@ -40,6 +40,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
