@@ -13,7 +13,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
-  {path: 'user-login', component: UserLoginComponent},
+  {path: 'login', component: UserLoginComponent},
   {path: 'feed', component: FeedComponent},
 
   {path: 'user-profile', component: UserProfileComponent},
