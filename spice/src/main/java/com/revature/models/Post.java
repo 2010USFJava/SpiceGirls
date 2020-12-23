@@ -1,30 +1,28 @@
 package com.revature.models;
 
-import java.util.Date;
-
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Post implements Serializable{
 
 	@Id
     @Column(name="post_id")
     @GeneratedValue
     private int post_id;
-    @Column(name="user_id")
-    private int user_id;
+	@ManyToOne()
+    @JoinColumn(name="user_id", referencedColumnName="user_id", updatable = false, nullable = false)
+    private User user;
     @Column(name="post")
     private String post;
 
@@ -37,14 +35,13 @@ public class Post {
 
 	public Post() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 
-	public Post(int post_id, int user_id, String post, byte[] image) {
+	public Post(int post_id, User user, String post, byte[] image) {
 		super();
 		this.post_id = post_id;
-		this.user_id = user_id;
+		this.user = user;
 		this.post = post;
 		this.image = image;
 	}
@@ -75,17 +72,17 @@ public class Post {
 	}
 
 
-	public int getUserId() {
-		return user_id;
+	public User getUserId() {
+		return user;
 	}
 
-	public void setUserId(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post_id + ", user_id=" + user_id + ", image=" + image + "]";
+		return "Post [post_id=" + post_id + ", user_id=" + user + ", image=" + image + "]";
 	}
 
 

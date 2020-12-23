@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +9,9 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +20,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.repository.PostRepository;
+import com.revature.services.PostService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,6 +37,9 @@ public class PostController {
 
 	@Autowired
 	private PostRepository postRepo;
+	
+	@Autowired
+	private PostService postServ;
 
 	@GetMapping("/post")
 	public List<Post> getAllPosts() {
@@ -36,7 +47,14 @@ public class PostController {
 		return postRepo.findAll();
 	}
 
-
+//	public ResponseEntity<Post> uploadPost(@RequestParam("file") MultipartFile file){
+//		try {
+//			postServ.store(file);
+//			return ResponseEntity.ok().body(file);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	@GetMapping("/post/{post_id}")
 	public ResponseEntity<Post> getPostById(@PathVariable(value = "post_id") int post_id)
@@ -46,9 +64,18 @@ public class PostController {
 		return ResponseEntity.ok().body(post);
 	}
 
-	@PostMapping("/post")
-	public Post createPost(@Valid @RequestBody Post post) {
-		return postRepo.save(post);
+	@PostMapping(value="/newpost",produces=MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Post> createPost(@RequestParam("image") MultipartFile image) throws IOException {
+		
+//		if(!image.isEmpty()) {
+//			byte[] bytes = image.getBytes();
+//			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("test1", )))
+		String filename = StringUtils.cleanPath(image.getOriginalFilename());
+		User user = new User();
+		user.setUserId(9);
+		Post post = new Post(3, user, "testing", image.getBytes());
+		return ResponseEntity.ok().body(post);
+		
 	}
 
 	@PutMapping("/post/{post_id}")
