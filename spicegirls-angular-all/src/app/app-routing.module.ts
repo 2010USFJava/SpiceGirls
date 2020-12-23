@@ -36,6 +36,7 @@ const routes: Routes = [
   {path: 'update/:id', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
+  {path: 'details/:id', component: UserListComponent},
 
 >>>>>>> b908e44f229a5709b52828dd63f4f59d6e20516a
   {path: '', redirectTo:'/post', pathMatch: 'full'}
