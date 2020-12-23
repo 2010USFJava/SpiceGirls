@@ -34,4 +34,9 @@ private baseUrl= 'http://localhost:8088/users'
     return this.http.get(`${this.baseUrl}/list/?name=${name}`);
   }
 
+  getLogin(username:string, password:string):Observable<any>{
+    console.log("in service login" + username + password)
+    return this.http.post(`${this.baseUrl}/verify`, {username, password}, {withCredentials:true}) ;
+  }
+
 }

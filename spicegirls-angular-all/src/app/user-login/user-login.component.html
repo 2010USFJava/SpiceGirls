@@ -9,7 +9,7 @@
                  </mat-error>
                 <label for="username">Username</label>
                 <mat-form-field class="full-width-input">
-                    <input matInput type="text" name="username" [(ngModel)]="login.username" #username="ngModel" required />
+                    <input matInput type="text" name="username" [(ngModel)]="user.username" #username="ngModel" required />
                     <mat-error>
                         Please provide a valid username
                     </mat-error>
@@ -20,7 +20,7 @@
             <div>
                 <label for="password">Password</label>
                 <mat-form-field class="full-width-input">
-                    <input matInput type="password" name="password" [(ngModel)]="login.password" #password="ngModel" required />
+                    <input matInput type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required />
                     <mat-error>
                         Please provide a valid password
                     </mat-error>

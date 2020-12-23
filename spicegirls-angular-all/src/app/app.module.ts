@@ -19,6 +19,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule,MatInputModule,MatCardModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatButtonModule,MatInputModule,MatCardModule} from '@angular/material';
     PostDetailsComponent,
     UserListComponent,
     UserUpdateComponent,
+    
    
   ],
   imports: [
@@ -46,7 +48,8 @@ import { MatButtonModule,MatInputModule,MatCardModule} from '@angular/material';
     FlexLayoutModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
