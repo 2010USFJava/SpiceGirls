@@ -1,6 +1,7 @@
 package com.revature.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Login;
 import com.revature.repository.LoginRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials ="true")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -33,10 +34,15 @@ public class LoginController {
 
 
 	
-	   @GetMapping("/list")
+	   @GetMapping("")
 	    public List<Login> getAllUsers(){
 	        return lRepo.findAll();
 	    }
+	   
+	   
+	   
+	   
+	   
 
 //	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
 //	public List<Login> findByUsername(String username) {
@@ -52,13 +58,32 @@ public class LoginController {
             return ResponseEntity.ok().body(login);
         }
 	
-	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
-    public ResponseEntity<Login> getByUsername(@PathVariable(value = "username") String username)
+	@PostMapping("/verify")
+	public Login verifyLogin(@Valid @RequestBody Login loginUser) throws ResourceNotFoundException {
+		System.out.println(loginUser.getUsername());
+		List<Login> loginList = getAllUsers();
+		Login login = new Login();
+		Iterator<Login> iterator = loginList.iterator();
+		while(iterator.hasNext()) {
+			System.out.println(loginList.iterator());
+			login = iterator.next();
+			System.out.println(login.getUserId());
+			if(login.getUsername().equals(loginUser.getUsername()) && login.getPassword().equals(loginUser.getPassword())) {
+				return login;
+			}
+		}
+		throw new ResourceNotFoundException("Login incorrect");
+	}
+
+	
+	@GetMapping(value = "/testing", produces = MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
+    public ResponseEntity<Login> getByUsername(@PathVariable(value = "username") String username,@PathVariable(value = "password") String password)
             throws ResourceNotFoundException {
-            Login login = lRepo.findByUsername(username);
+            Login login = lRepo.findByUsername(username,password);
 //              .orElseThrow(() -> new ResourceNotFoundException("Login not found for this username :: " + username));
             return ResponseEntity.ok().body(login);
         }
+
 	
 
 //	@ResponseStatus(HttpStatus.CREATED)
@@ -70,7 +95,7 @@ public class LoginController {
 //
 //	}
 	
-    @PostMapping
+    @PostMapping("/add")
     public Login createLogin(@Valid @RequestBody Login login) {
         return lRepo.save(login);
     }

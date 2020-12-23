@@ -24,13 +24,19 @@ onSubmit() {
     data => {
       console.log(data);
       this.login = data;
-      console.log(this.login.user_id)
-      this.cookieService.set('cookie', `${this.login.user_id}`)
+      console.log(this.login.userId);
+      this.cookieService.set('cookie', `${this.login.userId}`);
       console.log(this.cookieService.get('cookie'));
+      this._router.navigate(['post']);
     }
 
   )
 
 }
+
+/* post() {
+  
+this._router.navigate(['post']);
+} */
 
 }
