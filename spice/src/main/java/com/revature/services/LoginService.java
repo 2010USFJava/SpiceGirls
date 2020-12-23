@@ -38,7 +38,7 @@ public class LoginService {
 	
 	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
 	public List<Login> getByUsername(String name) {
-		return (List<Login>) lRepo.findByUsername(name);
+		return (List<Login>) lRepo.findByUsername(name, name);//caused an error
 	}
 
 	
