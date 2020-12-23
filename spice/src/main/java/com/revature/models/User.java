@@ -1,9 +1,15 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -23,8 +29,8 @@ public class User {
 	private String bio;
 	@Column(name="profile_pic")
 	private Byte[] profilePicture;
-	//@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-	// private List<Post> posts;
+	@OneToMany( targetEntity = Post.class, mappedBy = "user",fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	private List<Post> posts = new ArrayList<>();
 	
 	
 	public User() {

@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Login;
+import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.repository.LoginRepository;
 
 
@@ -38,6 +40,7 @@ public class LoginService {
 	public List<Login> getByUsername(String name) {
 		return (List<Login>) lRepo.findByUsername(name);
 	}
+
 	
     @Transactional
     public Login add(Login newLogin) {

@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "spicegirls-angular-all"
+  "defaultProject": "spicegirls-angular-all",
+  "cli": {
+    "analytics": false
+  }
 }

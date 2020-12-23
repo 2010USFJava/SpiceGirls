@@ -1,0 +1,30 @@
+.form-group{
+    justify-content: center;
+    align-self: center;
+    margin-left: 100%;
+}
+
+input{
+    width: max-content;
+}
+
+.actions{
+    justify-content: center;
+    align-self: center;
+    margin-left: 50%;
+   
+}
+
+h2,h3,h4,h5{
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+
+}
+
+img{
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+
+}
