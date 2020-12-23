@@ -40,6 +40,7 @@ public class LoginService {
 	public List<Login> getByUsername(String name) {
 		return (List<Login>) lRepo.findByUsername(name);
 	}
+
 	
     @Transactional
     public Login add(Login newLogin) {

@@ -26,7 +26,12 @@ export class CreatePostComponent implements OnInit {
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
-        this.post = new Post();
+        this.post.likeCount =0;
+        var userid = this.post.uid;
+        var postid = this.post.pid;
+        const post = new FormData();
+        post.append('post', data);
+        // this.post = new Post();
         this.goToList();
       },
         error => console.log(error));
