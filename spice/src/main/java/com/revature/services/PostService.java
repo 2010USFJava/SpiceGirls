@@ -26,6 +26,7 @@ private PostRepository pRepo;
 	public PostService(PostRepository postRepo) {
 		this.pRepo=postRepo;
 	}
+
 	
 	public Post store(MultipartFile file) throws IOException{
 		

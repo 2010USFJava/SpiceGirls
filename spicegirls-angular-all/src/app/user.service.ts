@@ -29,4 +29,9 @@ private baseUrl= 'http://localhost:8088/users'
   getUserList(): Observable<any> {
     return this.http.get(`${this.baseUrl}/list`);
   }
+
+  findByName(name): Observable<any> {
+    return this.http.get(`${this.baseUrl}/list/?name=${name}`);
+  }
+
 }

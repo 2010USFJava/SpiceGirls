@@ -36,10 +36,11 @@ public class LoginService {
 		return login.get();
 	}
 	
-//	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
-//	public Optional<Login> getByUsername(String name) {
-//		return  lRepo.findByUsername(name);
-//	}
+	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
+	public List<Login> getByUsername(String name) {
+		return (List<Login>) lRepo.findByUsername(name);
+	}
+
 	
     @Transactional
     public Login add(Login newLogin) {
