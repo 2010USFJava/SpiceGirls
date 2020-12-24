@@ -12,19 +12,24 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class UserProfileComponent implements OnInit {
  
-  cookie: number;
+  id: number;
   user: User;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    console.log(this.cookieService.get('cookie'));
-    this.user = new User();
-    this.cookie = this.route.snapshot.params['id'];
+    console.log(this.cookieService.get('cookie')); //prints out cookie (user id)
     
-    this.userService.getUser(this.cookie).subscribe(data => {
-      console.log(data)
-      this.user = data;
+    this.user = new User();
+    this.id = this.route.snapshot.params['id'];
+    this.id = Number(this.cookieService.get('cookie')); //turns cookie into number and id = cookie
+    console.log(this.id);
+    this.userService.getUser(this.id).subscribe(data => { //id is 1 when it gets here and prints all data
+      console.log(this.id) //prints correct id number
+      console.log(data) //prints whole user table
+      
+      this.user = data; 
+      console.log(this.user) //prints all users
     }, error => console.log(error));
   }
   list() {
