@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import{UserProfileComponent} from '../user-profile/user-profile.component';
 import { Observable} from "rxjs";
 import {UserService} from "../user.service";
 import{ Router } from '@angular/router';
 import {User} from "../user";
+import { stringify } from '@angular/compiler/src/util';
+import { EventEmitter } from 'events';
+
 
 @Component({
   selector: 'app-user-list',
@@ -13,9 +16,8 @@ import {User} from "../user";
 export class UserListComponent implements OnInit {
 
   users: Observable<User[]>;
-
   name: string;
-
+ 
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -53,7 +55,11 @@ export class UserListComponent implements OnInit {
     onSubmit() {
       this.searchUser();
     }
+  
+   
 
     
   }
+  
+  
 

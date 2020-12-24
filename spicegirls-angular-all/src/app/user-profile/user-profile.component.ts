@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../user';
 import { UserService} from '../user.service';
 import {UserListComponent}from  '../user-list/user-list.component';
 import { Router, ActivatedRoute} from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,16 +11,18 @@ import { Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
-  id: number;
+ 
+  cookie: number;
   user: User;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
+    console.log(this.cookieService.get('cookie'));
     this.user = new User();
-    this.id = this.route.snapshot.params['id'];
-    this.userService.getUser(this.id).subscribe(data => {
+    this.cookie = this.route.snapshot.params['id'];
+    
+    this.userService.getUser(this.cookie).subscribe(data => {
       console.log(data)
       this.user = data;
     }, error => console.log(error));
@@ -27,5 +30,6 @@ export class UserProfileComponent implements OnInit {
   list() {
     this.router.navigate(['list'])
   }
+
 
 }
