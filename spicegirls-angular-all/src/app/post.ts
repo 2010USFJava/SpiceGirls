@@ -2,6 +2,6 @@ export class Post{
     pid:number;
     uid:number;
     post:string;
-    image: any;
+    image: File;
     likeCount:number;
 }

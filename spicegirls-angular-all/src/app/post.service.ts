@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Post } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/${pid}`);
   }  
 
-  createPost(post: Object): Observable<any>{
+  createPost(post: Post): Observable<any>{
+    // const formdata: FormData = new FormData();
+    // formdata.append('post.image', post.image);
     return this.http.post(`${this.baseUrl}/newpost`, post);
   }
 

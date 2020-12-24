@@ -9,9 +9,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Post;
-import com.revature.models.User;
 import com.revature.repository.PostRepository;
 import com.revature.services.PostService;
 
@@ -64,16 +61,21 @@ public class PostController {
 		return ResponseEntity.ok().body(post);
 	}
 
-	@PostMapping(value="/newpost",produces=MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Post> createPost(@RequestParam("image") MultipartFile image) throws IOException {
+	@PostMapping(value="/newpost", consumes = {"application/json", "multipart/form-data"})
+	public ResponseEntity<Post> createPost(@Valid @RequestBody Post post) throws IOException {
 		
-//		if(!image.isEmpty()) {
-//			byte[] bytes = image.getBytes();
-//			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("test1", )))
-		String filename = StringUtils.cleanPath(image.getOriginalFilename());
-		User user = new User();
-		user.setUserId(9);
-		Post post = new Post(3, user, "testing", image.getBytes());
+		ObjectMapper om = new ObjectMapper();
+		byte[] image1 = om.writeValueAsBytes(post.getImage());
+		post.setImage(image1);
+		
+		byte[] image = om.reader().forType(byte[].class).readValue(post.getImage());
+		post.setImage(image);
+		
+		ObjectMetadata metadata = new ObjectMetadata();
+		
+		
+		postRepo.save(post);
+		
 		return ResponseEntity.ok().body(post);
 		
 	}

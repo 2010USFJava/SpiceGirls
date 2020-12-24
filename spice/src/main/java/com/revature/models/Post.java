@@ -1,33 +1,32 @@
 package com.revature.models;
 
-import java.io.Serializable;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 
 @Entity
 @Table(name = "posts")
-public class Post implements Serializable{
+public class Post {
 
 	@Id
     @Column(name="post_id")
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int post_id;
 	@ManyToOne()
     @JoinColumn(name="user_id", referencedColumnName="user_id", updatable = false, nullable = false)
     private User user;
     @Column(name="post")
     private String post;
-
-    @Lob
+    
+    @Type(type="org.hibernate.type.BinaryType")
     @Column(name="image")
     private byte[] image;
     @Column(name="like_count")

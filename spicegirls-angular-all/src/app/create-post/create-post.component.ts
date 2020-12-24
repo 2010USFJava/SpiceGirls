@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Router } from '@angular/router';
-import { Login } from '../login';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../user';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CreatePostComponent implements OnInit {
   post: Post = new Post();
-  login: Login = new Login();
+  user: User = new User();
   submitted = false;
 
   constructor(private postService: PostService, private router: Router,private cookieService: CookieService) { }
@@ -24,17 +24,23 @@ export class CreatePostComponent implements OnInit {
     this.post = new Post();
   }
 
+  check(){
+    var cookieExists: boolean = this.cookieService.check('cookie');
+    if(cookieExists){
+      console.log("cookie exists")
+      this.save();
+    }else{
+      console.log("cookie does not exist")
+    }
+  }
+
   save() {
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
-        this.post.likeCount =0;
+        this.post.likeCount = 0;
         this.cookieService.get('cookie');
-        var userid = this.post.uid;
-        var postid = this.post.pid;
-        const post = new FormData();
-        post.append('post', data);
-        // this.post = new Post();
+        var id = this.cookieService.get('cookie');
         this.goToList();
       },
         error => console.log(error));
