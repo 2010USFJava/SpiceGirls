@@ -20,6 +20,10 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule,MatInputModule,MatCardModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UploadFileComponent } from './upload/upload-file/upload-file.component';
+import { FormUploadComponent } from './upload/form-upload/form-upload.component';
+import { ListUploadComponent } from './upload/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 
 
 @NgModule({
@@ -37,6 +41,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PostDetailsComponent,
     UserListComponent,
     UserUpdateComponent,
+    UploadFileComponent,
+    FormUploadComponent,
+    ListUploadComponent,
+    DetailsUploadComponent,
     
    
   ],
