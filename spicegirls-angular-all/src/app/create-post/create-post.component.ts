@@ -14,10 +14,12 @@ import { UploadService } from '../upload.service';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-  post: Post;
+  post: Post = new Post();
   image:string;
   user: User;
   userId:number;
+  postId:number;
+  new: Post;
   submitted = false;
   selectedFile: File;
 
@@ -55,7 +57,7 @@ export class CreatePostComponent implements OnInit {
     this.userService.getUser(this.userId).subscribe(data =>{
       console.log(data);
       this.post.user = data;
-      this.save();
+      this.upload();
     },
     error => console.log(error));
   }
@@ -64,10 +66,11 @@ export class CreatePostComponent implements OnInit {
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
+        this.post.postId = <number>data;
+        console.log(this.post.postId);
         // this.post.uid = Number(this.cookieService.get('cookie'));
         // const formdata: FormData = new FormData();
         // formdata.append('image', this.post.image, this.post.image.name);
-        this.upload();
         this.goToList();
       },
         error => console.log(error));
@@ -75,16 +78,19 @@ export class CreatePostComponent implements OnInit {
 
   onFileSelected(event){
     console.log(event);
-    this.selectedFile = event.target.file[0];
+    this.selectedFile = event.target.files[0];
+    // this.post.image = this.selectedFile;
     // this.toFile = event.target.files;
     // this.image = event.target.files;
     
   }
 
+
   upload(){
-    this.uploadService.pushFileToStorage(this.toFile).subscribe(data => {
+    this.uploadService.pushFileToStorage(this.selectedFile).subscribe(data => {
       console.log(data);
-      this.goToList();;
+      this.post.image = String(data);
+      this.save();
     }, error => console.log(error));
   }
 
@@ -92,12 +98,11 @@ export class CreatePostComponent implements OnInit {
     //Now post.post isn't working and image is still null
   onSubmit() {
     this.submitted = true;
-    this.post = new Post();
-    this.post.image = this.image;
+    // this.post.image = this.image;
     this.userId = Number(this.cookieService.get('cookie'));
     console.log(this.post.user);
-    const file = this.toFile.item(0);
-    this.uploadService.pushFileToStorage(file);
+    // const file = this.selectedFile;
+    // this.uploadService.pushFileToStorage(file);
     // const formdata: FormData = new FormData();
     // formdata.append('image', this.post.image, this.post.image.name);
     this.getUser();

@@ -21,8 +21,8 @@ public class AmazonClient {
 	
 	private String objectKey;
 	private String bucketName ="spice-sm";
-	private String accessKey = "AKIAINRIWX5JUQJZOMVQ";
-	private String secertKey = "S7+I4i+obrM6u22lqqdfVZYNTWhaD0WyTXXguQiL";
+	private String accessKey = "AKIA2VTJGNSF462HN2NR";
+	private String secertKey = "nSQK9HDD9K54+8KcHA/pvpCVNL7Dfna6lxwWewLo";
 	private String region = "us-east-2";
 	
 	@PostConstruct
