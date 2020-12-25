@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.beans.Transient;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,7 @@ public class Post {
     private String post;
     
     @Type(type="org.hibernate.type.BinaryType")
-    @Column(name="image")
+    @Column(name="image")//, length=1000
     private byte[] image;
     @Column(name="like_count")
     private int likeCount;
@@ -46,7 +48,12 @@ public class Post {
 		this.image = image;
 	}
 
-
+	@Transient
+	public String getImagePath() {
+		if(image == null || user == null) return null;
+		return "/posts/" + user + "/" + image;
+	}
+	
 	public int getPostId() {
 		return post_id;
 	}

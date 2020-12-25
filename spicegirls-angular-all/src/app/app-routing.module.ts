@@ -10,6 +10,11 @@ import { PostListComponent } from './post-list/post-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { FormUploadComponent } from './upload/form-upload/form-upload.component';
+import { UploadService } from './upload/upload.service';
+import { UploadFileComponent } from './upload/upload-file/upload-file.component';
+import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
+import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 
 
 const routes: Routes = [
@@ -26,6 +31,11 @@ const routes: Routes = [
   {path: 'update/:id', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
+
+  // {path: 'upload', component: UploadFileComponent},
+  // {path: 'form-upload', component: FormUploadComponent},
+  // {path: 'details-upload', component: DetailsUploadComponent},
+  // {path: 'list-upload', component: ListUploadComponent},
 
   {path: 'details/:id', component: UserListComponent},
 

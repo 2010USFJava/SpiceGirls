@@ -1,13 +1,13 @@
-<div class="panel panel-primary">
+<!-- <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Post List</h2>
   </div>
   <div class="panel-body">
     <div class="container-fliud" *ngFor="let post of posts | async">
       <div class="container-image">
-        <!-- <div *ngIf="post.image"> -->
+         <div *ngIf="post.image"> 
           <img src="../assets/P2Icons/Cinnimon001.png" height="100px" style="width: 100px;" class="img-fluid" alt="">
-        <!-- </div> -->
+        </div>
       </div>
       <div>
         <h3>{{post.post}}</h3>
@@ -18,6 +18,43 @@
         <button (click)="postDetails(post.pid)" class="btn btn-info" style="margin-left: 10px">Details</button>
       </div>
     </div>
+  </div>
+</div> -->
+
+<h2>Spice Up Your Life</h2>
+
+<div class="card gedf-card" *ngFor="let post of posts | async">
+  <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center" >
+          <div class="d-flex justify-content-between align-items-center" >
+              <div class="mr-2">
+                  <img class="rounded-circle" width="45" src="../assets/P2Icons/Cinnimon001.png" alt="">
+              </div>
+              <div class="ml-2">
+                  <div class="h5 m-0">@Username</div>
+                  <div class="h7 text-muted">Fullname</div>
+              </div>
+          </div>
+          <div>
+          </div>
+      </div>
+
+  </div>
+  <div class="card-body">
+      <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+      <a class="card-link" href="#">
+        <img class="rounded-sqaure" width="200" style="justify-self: center; " src="../assets/P2Icons/Cinnimon001.png" alt="">
+      </a>
+
+      <p class="card-text">
+          {{post.post}}
+      </p>
+  </div>
+  <div class="card-footer">
+      <a href="#" class="card-link"><i class="fa fa-gittip"></i>
+        <img src="../assets/P2Icons/chilli001.png" width="20" alt=""> {{post.likeCount}}</a>
+      <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+      <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
   </div>
 </div>
 

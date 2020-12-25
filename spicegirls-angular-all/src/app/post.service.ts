@@ -16,13 +16,11 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/${pid}`);
   }  
 
-  createPost(post: Post): Observable<any>{
-    // const formdata: FormData = new FormData();
-    // formdata.append('post.image', post.image);
+  createPost(post: Object): Observable<Object>{
     return this.http.post(`${this.baseUrl}/newpost`, post);
   }
 
-  deletePost(pid:number): Observable<any>{
+  deletePost(pid:number): Observable<Object>{
     return this.http.delete(`${this.baseUrl}/${pid}`, { responseType: 'text' });
   }
 

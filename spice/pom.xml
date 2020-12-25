@@ -18,6 +18,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<aws-java-sdk.version>1.11.750</aws-java-sdk.version>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Starters are a set of convenient dependency descriptorsthat 
@@ -84,7 +85,7 @@
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.133</version>
+			<version>${aws-java-sdk.version}</version>
 		</dependency> 
 
 	</dependencies>
