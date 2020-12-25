@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadService } from '../upload.service';
+import { UploadService } from '../../upload.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class ListUploadComponent implements OnInit {
     this.showFile = false;
 
     if(enable){
-      this.fileUploads = this.uploadService.getFiles();
+      // this.fileUploads = this.uploadService.getFiles();
     }
   }
 

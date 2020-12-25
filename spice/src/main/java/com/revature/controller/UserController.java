@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -88,18 +89,29 @@ public class UserController {
 		return this.uServ.getByFirstName(name); //get request to /users come here
 	}
 
-	@GetMapping(value="/{user_id}", produces=MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
-	public User getUserById(@PathVariable int id) { //replacing getParameter step inside controller 
-		User user= uServ.getById(id);
+	@GetMapping(value="/profile", produces=MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
+	public Optional<User> getUserById(@RequestParam int id) { //replacing getParameter step inside controller 
+		Optional<User> user= userRepo.findById(id);
 		return user;
 	}
-
-	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public User addUser(@RequestBody User newUser) { // @RequestBody to pull info from body of method 
-		System.out.println(newUser);
-		User addedUser= uServ.add(newUser);
-		return addedUser;
-		
+	
+	
+	@PostMapping("/add")
+	public User createUser(@Valid @RequestBody User user) {
+		System.out.println(user);
+		return userRepo.save(user);
 	}
+
+
+	/*
+	 * @ResponseStatus(HttpStatus.CREATED)
+	 * 
+	 * @PostMapping(value="/add", consumes=MediaType.APPLICATION_JSON_VALUE,
+	 * produces=MediaType.APPLICATION_JSON_VALUE) public User addUser(@RequestBody
+	 * User newUser) { // @RequestBody to pull info from body of method
+	 * System.out.println(newUser); User addedUser= uServ.add(newUser); return
+	 * addedUser;
+	 * 
+	 * }
+	 */
 }

@@ -13,7 +13,7 @@ private baseUrl= 'http://localhost:8088/users'
   constructor(private http: HttpClient) { }
 
   getUser(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}/profile/?id=${id}`);
   }
   registerUser(user: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}/`, user);

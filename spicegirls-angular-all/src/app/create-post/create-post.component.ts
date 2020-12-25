@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { UploadService } from '../upload/upload.service';
+import { UploadService } from '../upload.service';
+
 
 @Component({
   selector: 'app-create-post',
@@ -13,13 +14,16 @@ import { UploadService } from '../upload/upload.service';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
-  post: Post = new Post();
-  user: User = new User();
-  id:number;
+  post: Post;
+  image:string;
+  user: User;
+  userId:number;
   submitted = false;
-  selectedFile: File = null;
+  selectedFile: File;
 
   toFile;
+
+
 
   constructor(private postService: PostService, private userService:UserService, 
     private router: Router,private cookieService: CookieService, private uploadService:UploadService) { }
@@ -31,7 +35,7 @@ export class CreatePostComponent implements OnInit {
   newPost(): void {
     this.submitted = false;
     this.post = new Post();
-    this.post.uid = Number(this.cookieService.get('cookie'));
+    // this.post.userId = Number(this.cookieService.get('cookie'));
     this.post.likeCount = 0;
   }
 
@@ -39,31 +43,31 @@ export class CreatePostComponent implements OnInit {
     var cookieExists: boolean = this.cookieService.check('cookie');
     if(cookieExists){
       console.log("cookie exists")
-      this.post.uid = Number(this.cookieService.get('cookie'));
+      // this.post.user = Number(this.cookieService.get('cookie'));
       this.save();
     }else{
       console.log("cookie does not exist")
     }
   }
 
+
+  getUser(){
+    this.userService.getUser(this.userId).subscribe(data =>{
+      console.log(data);
+      this.post.user = data;
+      this.save();
+    },
+    error => console.log(error));
+  }
+
   save() {
-    this.post.uid = Number(this.cookieService.get('cookie'));
-
-    this.userService.getUser(this.id).subscribe(data => {
-      this.user = data;
-    }, error => console.log(error));
-
-    this.post.uid = this.user.userId;
-
-    // const formdata: FormData = new FormData();
-    // formdata.append('image', this.post.image, this.post.image.name);
-
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
         // this.post.uid = Number(this.cookieService.get('cookie'));
         // const formdata: FormData = new FormData();
         // formdata.append('image', this.post.image, this.post.image.name);
+        this.upload();
         this.goToList();
       },
         error => console.log(error));
@@ -71,17 +75,32 @@ export class CreatePostComponent implements OnInit {
 
   onFileSelected(event){
     console.log(event);
-    this.toFile = event.target.files;
+    this.selectedFile = event.target.file[0];
+    // this.toFile = event.target.files;
+    // this.image = event.target.files;
+    
   }
 
+  upload(){
+    this.uploadService.pushFileToStorage(this.toFile).subscribe(data => {
+      console.log(data);
+      this.goToList();;
+    }, error => console.log(error));
+  }
+
+    //works good! Can attach user to post.
+    //Now post.post isn't working and image is still null
   onSubmit() {
     this.submitted = true;
-    this.post.uid = Number(this.cookieService.get('cookie'));
+    this.post = new Post();
+    this.post.image = this.image;
+    this.userId = Number(this.cookieService.get('cookie'));
+    console.log(this.post.user);
     const file = this.toFile.item(0);
-    // this.uploadService.fileUpload(file);
+    this.uploadService.pushFileToStorage(file);
     // const formdata: FormData = new FormData();
     // formdata.append('image', this.post.image, this.post.image.name);
-    this.save();
+    this.getUser();
   }
 
   goToList() {
