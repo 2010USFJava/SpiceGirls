@@ -14,6 +14,7 @@ export class UserUpdateComponent implements OnInit {
   id: number;
   user: User;
 
+
   testUser: User ={
     
     userId:22,
@@ -30,6 +31,7 @@ export class UserUpdateComponent implements OnInit {
   ngOnInit() {
     this.user = new User();
     this.id = this.route.snapshot.params['id'];
+    this.user=this.testUser;
 
     this.userService.getUser(this.id)
     .subscribe(data => {
@@ -37,6 +39,7 @@ export class UserUpdateComponent implements OnInit {
       this.user = data;
     }, error => console.log(error));
     }
+
     updateUser() {
       this.userService.updateUser(this.id, this.user).subscribe(data => {
         console.log(data);

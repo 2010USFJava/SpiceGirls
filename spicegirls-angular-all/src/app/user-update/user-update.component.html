@@ -1,10 +1,8 @@
 <h3>Update User</h3>
 
+
 <div>
   <h1>User</h1>
-  <!-- <h2>{{user.firstName}}</h2> -->
-
-  <h1>Test User</h1>
 <h2>{{testUser.firstName}} {{testUser.lastName}}</h2>
 
 </div>
@@ -15,7 +13,7 @@
       <input type="text" 
       class="form-control" 
       id="firstName" 
-      required [(ngModel)]="testUser.firstName" 
+      required [(ngModel)]="user.firstName" 
       name="firstName">
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
@@ -33,7 +31,23 @@
   <form name="update-bio" (ngSubmit)="updateBio()">
     <div class="form-group">
       <label for="name">Bio</label>
-      <input type="text" class="form-control" id="emailId" required [(ngModel)]="user.bio" name="bio">
+      <input type="text" class="form-control" id="bio" required [(ngModel)]="user.bio" name="bio">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <form name="update-password" (ngSubmit)="updatePassword()">
+    <div class="form-group">
+      <label for="name">Password</label>
+      <input type="text" class="form-control" id="password" required [(ngModel)]="user.password" name="password">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <form name="update-profile-picture" (ngSubmit)="updateProfilePicture()">
+    <div class="form-group">
+      <label for="name">Profile Picture</label>
+      <input type="text" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture">
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
