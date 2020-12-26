@@ -19,11 +19,10 @@ export class CreatePostComponent implements OnInit {
   user: User;
   userId:number;
   postId:number;
-  new: Post;
   submitted = false;
   selectedFile: File;
 
-  toFile;
+
 
 
 
@@ -52,7 +51,7 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-
+  //get user to save into post.user
   getUser(){
     this.userService.getUser(this.userId).subscribe(data =>{
       console.log(data);
@@ -61,13 +60,11 @@ export class CreatePostComponent implements OnInit {
     },
     error => console.log(error));
   }
-
+  //insert into the database
   save() {
     this.postService
       .createPost(this.post).subscribe(data => {
-        console.log(data)
-        // this.post.postId = <number>data;
-        // console.log(this.post.postId);
+        console.log(data);
         this.goToList();
       },
         error => console.log(error));
@@ -78,26 +75,15 @@ export class CreatePostComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     
   }
-
-  //need to get url of uploaded image to put into post.image
+  //upload to s3 bucket
   upload(){
     this.uploadService.pushFileToStorage(this.selectedFile).subscribe(data => {
       this.post.image = JSON.stringify(data.body);
-      console.log("LOOK AT THIS FOR URL: " + this.post.image);
+      console.log("LOOK AT THIS FOR URL: " + this.post.image);//checks for url to image in s3 bucket
       this.save();
     }, error => console.log(error));
   }
 
-
-  // download(){
-  //   this.uploadService.getFileFromStorage(this.selectedFile).subscribe(data => {
-  //     console.log("LOOK HERE FOR DOWNLOAD URL: " + data);
-
-  //   })
-  // }
-
-    //works good! Can attach user to post.
-    //Now post.post isn't working and image is still null
   onSubmit() {
     this.submitted = true;
     this.userId = Number(this.cookieService.get('cookie'));
