@@ -29,7 +29,8 @@ const routes: Routes = [
   {path: 'list', component: UserListComponent},
 
   {path: 'details/:id', component: UserListComponent},
-
+  // Added Like url for development
+  {path: 'like', component: LikePostComponent},
 
   {path: '', redirectTo:'/post', pathMatch: 'full'}
 ];

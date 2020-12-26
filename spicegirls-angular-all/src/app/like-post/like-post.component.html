@@ -1,1 +1,64 @@
-<p>like-post works!</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Like List</h2>
+    </div>
+
+    <div>
+    
+        <button (click)="deleteLike(2)"  class="btn btn-success"><img class="c_like" src="../../assets/P2Icons/chilli001.png" height="3%" style="width: 3%;" /></button>
+        <p></p>
+        <button (click)="createLike(7, 3)" class=""><img class="c_like" src="../../assets/P2Icons/chilli001.png" height="3%" style="width: 3%;" /></button>
+    </div>
+
+
+    <div class="panel-body">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> lid </th>    
+            <th> pid </th>
+            <th> uid </th>
+            <th> icon </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let like of likes | async">
+            <td>{{ like.likeId }}</td>
+            <td>{{ like.postId }}</td>
+            <td>{{ like.userId }}</td>
+            <td> <input class="c_like" type="image" src="../../assets/P2Icons/chilli001.png" height="3%" style="width: 3%;"></td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> first </th>
+            <th> pid </th>
+            <th> uid </th>
+            <th> likes </th>
+            <th> * </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let post of posts | async">
+            <td>{{ post.user.firstName }}</td>
+            <td>{{ post.postId }}</td>
+            <td>{{ post.user.userId }}</td>
+            <td>{{ post.likeCount }}</td>
+            <td> <input class="c_like" type="image" src="../../assets/P2Icons/chilli001.png" height="3%" style="width: 3%;"></td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<!-- 
+    Grab my selector below and add to 'post' feature
+    <app-like-post> </app-like-post>
+--> 
