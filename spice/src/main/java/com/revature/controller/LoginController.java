@@ -33,21 +33,6 @@ public class LoginController {
 	}
 	   
 
-	@PostMapping("/verify")
-	public User verifyLogin(@Valid @RequestBody User loginUser) throws ResourceNotFoundException {
-		System.out.println(loginUser.getUsername());
-		List<User> userList = getAllUsers();
-		User user = new User();
-		Iterator<User> iterator = userList.iterator();
-		while(iterator.hasNext()) {
-			System.out.println(userList.iterator());
-			user = iterator.next();
-			System.out.println(user.getUserId());
-			if(user.getUsername().equals(loginUser.getUsername()) && user.getPassword().equals(loginUser.getPassword())) {
-				return user;
-			}
-		}
-		throw new ResourceNotFoundException("Login incorrect");
-	}
+	
 
 }
