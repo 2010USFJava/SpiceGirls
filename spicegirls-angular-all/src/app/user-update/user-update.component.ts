@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User} from '../user';
 import {ActivatedRoute, Router} from '@angular/router';
-import { UserService} from '../user.service';
+// import { UserService} from '../user.service';
+import {UserUpdateService} from '../user-update.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-user-update',
@@ -9,35 +12,41 @@ import { UserService} from '../user.service';
   styleUrls: ['./user-update.component.css']
 })
 export class UserUpdateComponent implements OnInit {
-
   id: number;
-  user: User;
+  user: User = new User();
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+
+  constructor(private route: ActivatedRoute, private router: Router, private userUpdateService: UserUpdateService) { }
 
   ngOnInit() {
-    this.user = new User();
-    this.id = this.route.snapshot.params['id'];
 
-    this.userService.getUser(this.id)
+    //on update: Replace this will call to cookie or session
+    this.id=3;
+
+    this.userUpdateService.getUserById(this.id)
     .subscribe(data => {
       console.log(data)
       this.user = data;
     }, error => console.log(error));
-    }
-    updateUser() {
-      this.userService.updateUser(this.id, this.user).subscribe(data => {
-        console.log(data);
-        this.user = new User();
-        this.goToList();
-      }, error => console.log(error));
-    }
-    onSubmit() {
-      this.updateUser();
 
+
+  }
+    
+    updateCompletly(){
+      console.log("Update Completly is a work in progress");
+      this.userUpdateService.updateCompletly(this.user)
+      .subscribe(data=>{
+          console.log(data)
+          this.user=data;
+        }, error => console.log(error));
+
+
+        this.router.navigate(['/user-profile']);
     }
-    goToList() {
-      this.router.navigate(['/users']);
-    }
+
+    
+
+    
+
   }
 

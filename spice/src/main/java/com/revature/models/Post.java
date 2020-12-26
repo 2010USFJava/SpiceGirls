@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
 
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "posts")
@@ -28,9 +28,9 @@ public class Post {
     @Column(name="post")
     private String post;
     
-    @Type(type="org.hibernate.type.BinaryType")
+//    @Type(type="org.hibernate.type.BinaryType")
     @Column(name="image")//, length=1000
-    private byte[] image;
+    private String image;
     @Column(name="like_count")
     private int likeCount;
 
@@ -40,7 +40,7 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, User user, String post, byte[] image) {
+	public Post(int post_id, User user, String post, String image) {
 		super();
 		this.post_id = post_id;
 		this.user = user;
@@ -70,20 +70,20 @@ public class Post {
 		this.post = post;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
 
-	public User getUserId() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUserId(User user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
@@ -99,7 +99,7 @@ public class Post {
 
 
 	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
+		this.likeCount = likeCount; 
 
 	}
 	

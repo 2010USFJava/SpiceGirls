@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Post;
+import com.revature.models.User;
 import com.revature.repository.PostRepository;
 import com.revature.services.PostService;
 
@@ -55,7 +54,7 @@ public class PostController {
 	}
 //	@CookieValue
 	@PostMapping(value="/newpost")
-	public Post createPost(@Valid @RequestBody Post post) throws IOException {
+	public Post createPost(@Valid @RequestBody Post post, String endpoint) throws IOException {
 		
 //		ObjectMapper om = new ObjectMapper();
 //		byte[] image1 = om.writeValueAsBytes(post.getImage());
@@ -63,19 +62,28 @@ public class PostController {
 //		
 //		byte[] image = om.reader().forType(byte[].class).readValue(post.getImage());
 //		post.setImage(image);
+		post.getUser().getUserId();
+		post.getImage();
+		
 //		
 		System.out.println(post);
 		
 		return postRepo.save(post);
 		
 	}
+
+	
+//	public Post updatePostImage(String endpoint){
+//		
+//	}
+
 	@PutMapping("/post/{post_id}")
 	public ResponseEntity<Post> updatePost(@PathVariable(value = "post_id") int post_id,
 			@Valid @RequestBody Post postDetails) throws ResourceNotFoundException {
 		Post post = postRepo.findById(post_id)
 				.orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
 
-		post.setUserId(postDetails.getUserId());
+		post.setUser(postDetails.getUser());
 		post.setPost(postDetails.getPost());
 		post.setImage(postDetails.getImage());
 		post.setLikeCount(postDetails.getLikeCount());

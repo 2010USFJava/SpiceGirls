@@ -5,7 +5,6 @@ import { Post } from './post';
 export class User{
 
    // user_id:number;
-
     userId:number;
     firstName:string;
     lastName:string;
@@ -13,5 +12,4 @@ export class User{
     profilePicture:any;
     username: string;
     password: string;
-    
 }

@@ -12,14 +12,17 @@ import { CookieService } from 'ngx-cookie-service';
 export class UserLoginComponent implements OnInit { 
   username: string;
   password: string;
+
   user: User = new User();
   public loginInvalid: boolean;
 
   constructor(private myUser:UserService, private _route: ActivatedRoute, private _router: Router, private cookieService: CookieService) { }
 
+
 ngOnInit(): void {
 }
 onSubmit() {
+
   this.loginInvalid = false;
   try {
     this.myUser.getLogin(this.user.username, this.user.password).subscribe(

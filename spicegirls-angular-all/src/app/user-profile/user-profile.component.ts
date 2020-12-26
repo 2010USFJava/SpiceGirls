@@ -1,9 +1,11 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../user';
 import { UserService} from '../user.service';
 import {UserListComponent}from  '../user-list/user-list.component';
 import { Router, ActivatedRoute} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-user-profile',

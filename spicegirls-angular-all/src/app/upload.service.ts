@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UploadService {
+
+  FOLDER = 'spice-sm'
 
   constructor(private http:HttpClient) { }
 
@@ -20,8 +25,8 @@ export class UploadService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any>{
-    return this.http.get('http://localhost:8088/spice/post');
+  getFiles(key: string): Observable<any>{
+    return this.http.get('http://localhost:8088/file/download');
   }
 
 
@@ -41,9 +46,8 @@ export class UploadService {
 
   //   const params = {
   //     Bucket: 'spice-sm',
-  //     Key: file.name,
+  //     Key: this.FOLDER + file.name,
   //     Body: file,
-  //     ACL: 'public-read',
   //     ContentType: contentType
   //   };
 

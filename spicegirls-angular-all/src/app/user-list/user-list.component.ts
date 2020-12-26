@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Output } from '@angular/core';
 import{UserProfileComponent} from '../user-profile/user-profile.component';
 import { Observable} from "rxjs";
@@ -48,6 +49,7 @@ export class UserListComponent implements OnInit {
       this.userService.findByName(this.name).subscribe(
         user => {
           this.users = user;
+
           console.log(user); //searched user 
           this.user= user;
           var array = user,  
@@ -59,7 +61,6 @@ export class UserListComponent implements OnInit {
           this.id = Number(this.cookieService.get('cookie')); //turns cookie into number and id = cookie
           console.log(this.id); //returning NaN
           console.log(this.cookieService.get('cookie')); //returning udefined 
-       
         },
       error => { console.log(error);
       });
@@ -67,9 +68,6 @@ export class UserListComponent implements OnInit {
     onSubmit() {
       this.searchUser();
     }
-  
-   
-
     
   }
   

@@ -16,33 +16,29 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Service
 public class AmazonClient {
-//	
-//	private AmazonS3 s3client;
-//	@Value("${amazonProperties.endpointUrl}")
-//	private String endpointUrl;
-//	@Value("${amazonProperties.bucketName}")
-//	private String bucketName;
-//	@Value("${amazonProperties.accessKey}")
-//	private String accessKey;
-//	@Value("${amazonProperties.secretKey}")
-//	private String secertKey;
-//	@Value("${amazonProperties.region}")
-//	private String region;
-//	
-//	@PostConstruct
-//	private void initializeAmazon() {
-//		AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secertKey);
-//		this.s3client = new AmazonS3Client(credentials);
-//	}
-//	 @Bean
-//	  public AmazonS3 s3client() {
-//	    
-//	    BasicAWSCredentials awsCreds = new BasicAWSCredentials(this.accessKey, this.secertKey);
-//	    AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-//	                .withRegion(Regions.fromName(region))
-//	                            .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-//	                            .build();
-//	    
-//	    return s3Client;
-//	  }
+	
+	private AmazonS3 s3client;
+	
+	private String objectKey;
+	private String bucketName ="spice-sm";
+	private String accessKey = "AKIA2VTJGNSF462HN2NR";
+	private String secertKey = "nSQK9HDD9K54+8KcHA/pvpCVNL7Dfna6lxwWewLo";
+	private String region = "us-east-2";
+	
+	@PostConstruct
+	private void initializeAmazon() {
+		AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secertKey);
+		this.s3client = new AmazonS3Client(credentials);
+	}
+	 @Bean
+	  public AmazonS3 s3client() {
+	    
+	    BasicAWSCredentials awsCreds = new BasicAWSCredentials(this.accessKey, this.secertKey);
+	    AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+	                .withRegion(Regions.fromName(region))
+	                            .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+	                            .build();
+	    
+	    return s3Client;
+	  }
 }
