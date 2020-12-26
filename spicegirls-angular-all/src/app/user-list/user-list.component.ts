@@ -57,8 +57,8 @@ export class UserListComponent implements OnInit {
           console.log(object);  
           console.log(this.user); //i think the problem is this is an array that needs to be an object
           console.log(object.userId); //this should get user id of user but its saying undefined why???
-          this.cookieService.set('cookie', `${object.userId}`); //sets cookie as user id but id is undefined
-          this.id = Number(this.cookieService.get('cookie')); //turns cookie into number and id = cookie
+          this.cookieService.set('search', `${object.userId}`); //sets cookie as user id but id is undefined
+          this.id = Number(this.cookieService.get('search')); //turns cookie into number and id = cookie
           console.log(this.id); //returning NaN
           console.log(this.cookieService.get('cookie')); //returning udefined 
         },

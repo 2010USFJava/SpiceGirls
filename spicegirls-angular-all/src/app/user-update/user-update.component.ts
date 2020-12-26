@@ -16,12 +16,12 @@ export class UserUpdateComponent implements OnInit {
   user: User = new User();
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private userUpdateService: UserUpdateService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userUpdateService: UserUpdateService, private CookieService: CookieService) { }
 
   ngOnInit() {
 
-    //on update: Replace this will call to cookie or session
-    this.id=3;
+    this.id = Number(this.CookieService.get('cookie'));
+
 
     this.userUpdateService.getUserById(this.id)
     .subscribe(data => {

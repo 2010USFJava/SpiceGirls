@@ -4,6 +4,8 @@ import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Router } from '@angular/router';
 import { UploadService } from '../upload.service';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -12,11 +14,12 @@ import { UploadService } from '../upload.service';
 })
 export class PostListComponent implements OnInit {
   posts: Observable<Post[]>;
-
-  constructor(private postService:PostService, private uploadService:UploadService, private router:Router) { }
+  user: User;
+  constructor(private postService:PostService, private uploadService:UploadService, private router:Router, private userService: UserService ) { }
 
   ngOnInit(): void {
     this.reloadData();
+    
   }
 
   reloadData(){

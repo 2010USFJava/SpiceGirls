@@ -14,6 +14,7 @@ import { UploadFileComponent } from './upload/upload-file/upload-file.component'
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { LikePostComponent } from './like-post/like-post.component';
+import { UserFriendProfileComponent } from './user-friend-profile/user-friend-profile.component';
 
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'update', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
+  {path: 'user-friend-profile', component: UserFriendProfileComponent},
 
 
   // {path: 'upload', component: UploadFileComponent},
