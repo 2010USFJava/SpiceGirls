@@ -79,14 +79,22 @@ export class CreatePostComponent implements OnInit {
     
   }
 
-
+  //need to get url of uploaded image to put into post.image
   upload(){
     this.uploadService.pushFileToStorage(this.selectedFile).subscribe(data => {
-      console.log("LOOK AT THIS FOR URL: " + data);
-      this.post.image = String(data);
+      this.post.image = JSON.stringify(data.body);
+      console.log("LOOK AT THIS FOR URL: " + this.post.image);
       this.save();
     }, error => console.log(error));
   }
+
+
+  // download(){
+  //   this.uploadService.getFileFromStorage(this.selectedFile).subscribe(data => {
+  //     console.log("LOOK HERE FOR DOWNLOAD URL: " + data);
+
+  //   })
+  // }
 
     //works good! Can attach user to post.
     //Now post.post isn't working and image is still null

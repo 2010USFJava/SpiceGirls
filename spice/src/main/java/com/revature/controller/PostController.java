@@ -57,7 +57,9 @@ public class PostController {
 	public Post createPost(@Valid @RequestBody Post post) throws IOException {
 
 		post.getUser().getUserId();
-//		post.getImage();
+		String test = post.getImage();
+		String set = test.substring(1, test.length()-1);
+		post.setImage(set);
 			
 		System.out.println(post);
 		
