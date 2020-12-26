@@ -25,6 +25,7 @@
     "@fortawesome/angular-fontawesome": "^0.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@types/chart.js": "^2.9.29",
     "aws-sdk": "^2.817.0",
     "bootstrap": "^4.5.3",
     "fine-uploader": "^5.16.2",
