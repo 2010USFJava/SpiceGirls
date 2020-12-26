@@ -14,7 +14,7 @@ export class UploadService {
 
   constructor(private http:HttpClient) { }
 
-  pushFileToStorage(file: File): Observable<HttpEvent<[]>> {
+  pushFileToStorage(file: File): Observable<any> {
     const formdata: FormData = new FormData();
     formdata.append('file', file);
     const req = new HttpRequest('POST', 'http://localhost:8088/file/upload', formdata, {
@@ -25,8 +25,12 @@ export class UploadService {
     return this.http.request(req);
   }
 
-  getFiles(key: string): Observable<any>{
+  getFileFromStorage(key: string): Observable<any>{
     return this.http.get('http://localhost:8088/file/download');
+  }
+
+  getFiles(key: string): Observable<any>{
+    return this.http.get('http://localhost:8088/file/all');
   }
 
 
