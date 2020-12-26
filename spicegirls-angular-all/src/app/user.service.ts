@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,10 @@ private baseUrl= 'http://localhost:8088/users'
   constructor(private http: HttpClient) { }
 
   getUser(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}/profile/?id=${id}`); //turms out it was going to the wrong function in sts. is now but not working
   }
   registerUser(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/`, user);
+    return this.http.post(`${this.baseUrl}/add`, user);
 
   }
   updateUser(id:number, value: any): Observable<Object> {
@@ -32,6 +33,11 @@ private baseUrl= 'http://localhost:8088/users'
 
   findByName(name): Observable<any> {
     return this.http.get(`${this.baseUrl}/list/?name=${name}`);
+  }
+
+  getLogin(username:string, password:string):Observable<any>{
+    console.log("in service login" + username + password)
+    return this.http.post(`${this.baseUrl}/verify`, {username, password}, {withCredentials:true}) ;
   }
 
 }

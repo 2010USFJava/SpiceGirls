@@ -26,22 +26,21 @@
 			code and copy paste loads of dependency descriptors. For example,if you want 
 			to get started using Spring and JPA for database access justinclude the spring-boot-starter-data-jpa 
 			dependency in your project, andyou are good to go. -->
-
-
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
 		<!-- Spring Boot includes an additional set of tools that can make theapplication 
 			development experience a little more pleasant. This dependencycan be included 
 			in any project to provide additional development-time features.Such as Automatic 
@@ -52,6 +51,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
 		<!-- Implementing a data access layer of an application has been cumbersomefor 
 			quite a while. Too much boilerplate code has to be written to executesimple 
 			queries as well as perform pagination, and auditing. Spring Data JPAaims 
@@ -63,11 +63,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -81,17 +83,16 @@
 			<version>2.4.1</version>
 		</dependency>
 
-<<<<<<< HEAD
-=======
+
 		<!-- Isa adding AWS S3 dependency 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
 			<version>1.11.133</version>
-		</dependency> -->
->>>>>>> isa
-
+		</dependency> 
+		</dependency>-->
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>

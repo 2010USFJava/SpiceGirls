@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/feed">
+          <a class="nav-link" routerLink="/post">
             <img src="assets/P2Icons/home1x.png" height="30px" style="width: 30px;" class="img-fluid" alt="">
             <span class="sr-only">(current)</span>
             </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user-friend-profile">
+          <a class="nav-link" routerLink="/list">
           <img src="assets/P2Icons/friends1x.png" height="30px" style="width: 30px;" class="img-fluid" alt="">
           </a>
         </li>
@@ -35,7 +35,8 @@
           </a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" >
+
+      <form class="form-inline my-2 my-lg-0" routerLink="/list">
         <input class="form-control mr-sm-2" type="search" placeholder="Search"aria-label="Search">
         <button class="btn my-2 my-sm-0" type="submit" >Search</button>
       </form>

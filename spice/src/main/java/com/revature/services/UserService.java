@@ -33,7 +33,7 @@ public class UserService {
 	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
 	public List<User> getByFirstName(String name) {
 		//List<User> _user=uRepo.findByFirstName(name);
-		return (List<User>) uRepo.findByFirstName(name);
+		return (List<User>) uRepo.findByName(name);
 	}
 
  
@@ -41,8 +41,9 @@ public class UserService {
 	@Transactional
 	//we probably need to add each field ex. newUser.getUsername().equals("")
 	public User add(User newUser) {
-		if(newUser.getFirstName().equals("")|| newUser.getLastName().equals("")) return null;
-		if(newUser.getFirstName()==null|| newUser.getLastName()==null) return null;
+		if(newUser.getFirstName().equals("")|| newUser.getLastName().equals("") || newUser.getUsername().equals("") ||  newUser.getPassword().equals("")) return null;
+		if(newUser.getFirstName()==null|| newUser.getLastName()==null ||  newUser.getUsername()==null|| newUser.getPassword()==null  ) return null;
+		
 		return uRepo.save(newUser);
 	}
 	@Transactional

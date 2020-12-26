@@ -1,6 +1,9 @@
 package com.revature.models;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,11 +19,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2236896770543254258L;
 	@Id
 	@Column(name="user_id")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
 	@Column(name="first_name", nullable=false)
 	private String firstName;
@@ -29,6 +37,12 @@ public class User {
 	private String bio;
 	@Column(name="profile_pic")
 	private Byte[] profilePicture;
+
+	@Column(name="username")
+	private String username;
+	@Column(name="password")
+	private String password;
+
 	@OneToMany( targetEntity = Post.class, mappedBy = "user",fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private List<Post> posts = new ArrayList<>();
 	
@@ -44,6 +58,8 @@ public class User {
 		this.user_id = user_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
 		this.bio = bio;
 		this.profilePicture = profilePicture;
 	}
@@ -89,12 +105,27 @@ public class User {
 	}
 
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", bio=" + bio
-				+ ", profilePicture=" + profilePicture + "]";
-
+		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", bio=" + bio + ", profilePicture="
+				+ Arrays.toString(profilePicture) + ", posts=" + posts + "]";
 	}
 	
 	

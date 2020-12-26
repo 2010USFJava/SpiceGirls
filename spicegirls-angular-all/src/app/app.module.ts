@@ -17,6 +17,9 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { CookieService } from 'ngx-cookie-service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule,MatInputModule,MatCardModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -33,14 +36,19 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     PostListComponent,
     PostDetailsComponent,
     UserListComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

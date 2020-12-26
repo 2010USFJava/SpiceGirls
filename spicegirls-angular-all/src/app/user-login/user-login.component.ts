@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from '../login.service';
-import { Login } from '../login';
+import { UserService } from '../user.service';
+import { User } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -12,26 +12,34 @@ import { CookieService } from 'ngx-cookie-service';
 export class UserLoginComponent implements OnInit { 
   username: string;
   password: string;
-  login: Login = new Login();
 
-  constructor(private myLogin:LoginService, private _route: ActivatedRoute, private _router: Router, private cookieService: CookieService) { }
+  user: User = new User();
+  public loginInvalid: boolean;
+
+  constructor(private myUser:UserService, private _route: ActivatedRoute, private _router: Router, private cookieService: CookieService) { }
+
 
 ngOnInit(): void {
 }
 onSubmit() {
-  this.myLogin.getLogin(this.login.username, this.login.password).subscribe(
 
-    data => {
-      console.log(data);
-      this.login = data;
-      console.log(this.login.userId);
-      this.cookieService.set('cookie', `${this.login.userId}`);
-      console.log(this.cookieService.get('cookie'));
-      this._router.navigate(['post']);
-    }
+  this.loginInvalid = false;
+  try {
+    this.myUser.getLogin(this.user.username, this.user.password).subscribe(
+      data => {
+        console.log(data);
+        this.user = data;
+        console.log(this.user.userId);
+        this.cookieService.set('cookie', `${this.user.userId}`);
+        console.log(this.cookieService.get('cookie'));
+        this._router.navigate(['post']);
+      } 
+  
+    )
 
-  )
-
+  } catch (err) {
+    this.loginInvalid = true;
+  }
 }
 
 /* post() {
