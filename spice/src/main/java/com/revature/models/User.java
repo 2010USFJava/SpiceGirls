@@ -1,6 +1,5 @@
 package com.revature.models;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,12 +36,10 @@ public class User implements Serializable {
 	private String bio;
 	@Column(name="profile_pic")
 	private Byte[] profilePicture;
-
 	@Column(name="username")
 	private String username;
 	@Column(name="password")
 	private String password;
-
 	@OneToMany( targetEntity = Post.class, mappedBy = "user",fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private List<Post> posts = new ArrayList<>();
 	

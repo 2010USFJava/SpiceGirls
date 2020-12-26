@@ -1,35 +1,33 @@
 package com.revature.models;
 
-import java.io.Serializable;
-
+import java.beans.Transient;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "posts")
-public class Post implements Serializable{
+public class Post {
 
 	@Id
     @Column(name="post_id")
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int post_id;
 	@ManyToOne()
     @JoinColumn(name="user_id", referencedColumnName="user_id", updatable = false, nullable = false)
     private User user;
     @Column(name="post")
     private String post;
-
-    @Lob
-    @Column(name="image")
-    private byte[] image;
+    
+//    @Type(type="org.hibernate.type.BinaryType")
+    @Column(name="image")//, length=1000
+    private String image;
     @Column(name="like_count")
     private int likeCount;
 
@@ -39,7 +37,7 @@ public class Post implements Serializable{
 	}
 	
 
-	public Post(int post_id, User user, String post, byte[] image) {
+	public Post(int post_id, User user, String post, String image) {
 		super();
 		this.post_id = post_id;
 		this.user = user;
@@ -47,7 +45,12 @@ public class Post implements Serializable{
 		this.image = image;
 	}
 
-
+	@Transient
+	public String getImagePath() {
+		if(image == null || user == null) return null;
+		return "/posts/" + user + "/" + image;
+	}
+	
 	public int getPostId() {
 		return post_id;
 	}
@@ -64,20 +67,20 @@ public class Post implements Serializable{
 		this.post = post;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
 
-	public User getUserId() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUserId(User user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
