@@ -10,7 +10,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
-
+import { LikePostComponent } from './like-post/like-post.component';
 
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
