@@ -1,49 +1,73 @@
 package com.revature.models;
 
+
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "likes")
 public class Like {
-
-	/*
-	 * JPA can be used to efficiently map composite keys and query them via derived queries.
-	 * @EmbeddedId is used applied to a persistent field or property of an 
-	 * entity class or mapped superclass to denote a composite primary key that is an embeddable class
-	 */
-	@EmbeddedId
-    private LikeId id;
-
+	
+	@Id
+	@Column(name="like_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int likeId;
+	@Column(name="post_id")
+	private int postId;
+	@Column(name="user_id")
+	private int userId;
+	
+	
 	public Like() {
 		super();
 	}
 
-	public Like(LikeId id) {
+	public Like(int postId, int userId) {
 		super();
-		this.id = id;
+		this.postId = postId;
+		this.userId = userId;
 	}
 
-	public LikeId getId() {
-		return id;
+	public Like(int likeId, int postId, int userId) {
+		super();
+		this.likeId = likeId;
+		this.postId = postId;
+		this.userId = userId;
 	}
 
-	public void setId(LikeId id) {
-		this.id = id;
+	public int getLikeId() {
+		return likeId;
+	}
+
+	public void setLikeId(int likeId) {
+		this.likeId = likeId;
+	}
+
+	public int getPostId() {
+		return postId;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public String toString() {
-		return "Like [id=" + id + "]";
+		return "Like [likeId=" + likeId + ", postId=" + postId + ", userId=" + userId + "]";
 	}
-	
-	
-	
+    
 	
 }
