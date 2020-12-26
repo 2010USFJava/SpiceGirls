@@ -1,10 +1,10 @@
 <h3>Create Post</h3>
 <div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
+  <form enctype="multipart/form-data" (ngSubmit)="onSubmit()">
  
     <div class="form-group">
       <label for="name">Image</label>
-      <input type="file" class="form-control" id="image" required [(ngModel)]="post.image" name="image">
+      <input type="file" (change)="onFileSelected($event)" class="form-control" id="selectedFile" required [(ngModel)]="post.image" name="selectedFile" accept="image/jpeg, image/png">
     </div>
     <div class="form-group">
       <label for="name">Add Caption:</label>

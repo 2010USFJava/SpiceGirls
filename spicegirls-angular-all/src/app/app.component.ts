@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spicegirls-angular-all';
+
+  displayColor(){
+   //if register or login path body = white else body = gradient
+  }
 }

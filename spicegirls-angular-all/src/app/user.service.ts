@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ private baseUrl= 'http://localhost:8088/users'
   constructor(private http: HttpClient) { }
 
   getUser(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}/profile/?id=${id}`);
+
   }
   registerUser(user: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, user);
@@ -38,5 +40,8 @@ private baseUrl= 'http://localhost:8088/users'
     console.log("in service login" + username + password)
     return this.http.post(`${this.baseUrl}/verify`, {username, password}, {withCredentials:true}) ;
   }
+
+
+
 
 }
