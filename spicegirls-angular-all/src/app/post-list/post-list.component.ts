@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Router } from '@angular/router';
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-post-list',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class PostListComponent implements OnInit {
   posts: Observable<Post[]>;
 
-  constructor(private postService:PostService, private router:Router) { }
+  constructor(private postService:PostService, private uploadService:UploadService, private router:Router) { }
 
   ngOnInit(): void {
     this.reloadData();
@@ -20,6 +21,8 @@ export class PostListComponent implements OnInit {
 
   reloadData(){
     this.posts = this.postService.getPostList();
+    // var viewer = new PhotoViewer();
+    // this.posts = this.uploadService.getFiles();
   }
 
   deletePost(pid:number){

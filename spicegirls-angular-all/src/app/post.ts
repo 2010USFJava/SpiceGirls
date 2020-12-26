@@ -1,7 +1,9 @@
+import { User } from './user';
+
 export class Post{
-    pid:number;
-    uid:number;
+    postId:number;
+    user:User;
     post:string;
-    image: any;
+    image:string;
     likeCount:number;
 }
