@@ -54,18 +54,11 @@ public class PostController {
 	}
 //	@CookieValue
 	@PostMapping(value="/newpost")
-	public Post createPost(@Valid @RequestBody Post post, String endpoint) throws IOException {
-		
-//		ObjectMapper om = new ObjectMapper();
-//		byte[] image1 = om.writeValueAsBytes(post.getImage());
-//		post.setImage(image1);
-//		
-//		byte[] image = om.reader().forType(byte[].class).readValue(post.getImage());
-//		post.setImage(image);
+	public Post createPost(@Valid @RequestBody Post post) throws IOException {
+
 		post.getUser().getUserId();
-		post.getImage();
-		
-//		
+//		post.getImage();
+			
 		System.out.println(post);
 		
 		return postRepo.save(post);

@@ -66,11 +66,8 @@ export class CreatePostComponent implements OnInit {
     this.postService
       .createPost(this.post).subscribe(data => {
         console.log(data)
-        this.post.postId = <number>data;
-        console.log(this.post.postId);
-        // this.post.uid = Number(this.cookieService.get('cookie'));
-        // const formdata: FormData = new FormData();
-        // formdata.append('image', this.post.image, this.post.image.name);
+        // this.post.postId = <number>data;
+        // console.log(this.post.postId);
         this.goToList();
       },
         error => console.log(error));
@@ -79,16 +76,13 @@ export class CreatePostComponent implements OnInit {
   onFileSelected(event){
     console.log(event);
     this.selectedFile = event.target.files[0];
-    // this.post.image = this.selectedFile;
-    // this.toFile = event.target.files;
-    // this.image = event.target.files;
     
   }
 
 
   upload(){
     this.uploadService.pushFileToStorage(this.selectedFile).subscribe(data => {
-      console.log(data);
+      console.log("LOOK AT THIS FOR URL: " + data);
       this.post.image = String(data);
       this.save();
     }, error => console.log(error));
@@ -98,13 +92,8 @@ export class CreatePostComponent implements OnInit {
     //Now post.post isn't working and image is still null
   onSubmit() {
     this.submitted = true;
-    // this.post.image = this.image;
     this.userId = Number(this.cookieService.get('cookie'));
     console.log(this.post.user);
-    // const file = this.selectedFile;
-    // this.uploadService.pushFileToStorage(file);
-    // const formdata: FormData = new FormData();
-    // formdata.append('image', this.post.image, this.post.image.name);
     this.getUser();
   }
 
