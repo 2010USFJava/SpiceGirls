@@ -1,3 +1,4 @@
+
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
  <input class="form-control mr-sm-2" type="text" placeholder="Search" id="name" name="name"[(ngModel)]="name" aria-label="Search">
@@ -5,7 +6,8 @@
 </div>
 <div class="btn-group">
 
-  <button class="btn btn-success" type="submit" >Search</button>
+
+  <button class="btn btn-info" type="submit" >Search</button>
 </div>
 </form>
 <table class="table table-striped">
@@ -23,8 +25,9 @@
       <td>{{user.lastName}}</td>
       <td>{{user.bio}}</td>
       <td>{{user.profilePicture}}</td>
-      <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
-          <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+      <td>
+
+          <button routerLink='/user-profile' class="btn btn-info" style="margin-left: 10px">View Profile</button>
       </td>
     </tr>
   </tbody>
@@ -50,8 +53,9 @@
             <td>{{user.lastName}}</td>
             <td>{{user.bio}}</td>
             <td>{{user.profilePicture}}</td>
-            <td><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
-                <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            <td>
+                <button routerLink="/user-profile" class="btn btn-info" style="margin-left: 10px">View Profile</button>
+
             </td>
           </tr>
         </tbody>

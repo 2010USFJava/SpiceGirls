@@ -16,7 +16,7 @@ export class PostService {
   }  
 
   createPost(post: Object): Observable<any>{
-    return this.http.post(`${this.baseUrl}`, post);
+    return this.http.post(`${this.baseUrl}/newpost`, post);
   }
 
   deletePost(pid:number): Observable<any>{

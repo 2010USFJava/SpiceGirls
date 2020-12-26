@@ -1,19 +1,21 @@
 package com.revature.models;
 
-import java.beans.Transient;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Post implements Serializable{
 
 	@Id
     @Column(name="post_id")
@@ -37,7 +39,8 @@ public class Post {
 	}
 	
 
-	public Post(int post_id, User user, String post, String image) {
+
+	public Post(int post_id, User user, String post, byte[] image) {
 		super();
 		this.post_id = post_id;
 		this.user = user;
@@ -76,11 +79,12 @@ public class Post {
 	}
 
 
-	public User getUser() {
+
+	public User getUserId() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUserId(User user) {
 		this.user = user;
 	}
 

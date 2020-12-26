@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.Post;
@@ -38,12 +42,21 @@ public class PostController {
 	@Autowired
 	private PostService postServ;
 
-	
 	@GetMapping("/post")
 	public List<Post> getAllPosts() {
 		
 		return postRepo.findAll();
 	}
+
+
+//	public ResponseEntity<Post> uploadPost(@RequestParam("file") MultipartFile file){
+//		try {
+//			postServ.store(file);
+//			return ResponseEntity.ok().body(file);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	@GetMapping("/post/{post_id}")
 	public ResponseEntity<Post> getPostById(@PathVariable(value = "post_id") int post_id)
@@ -52,31 +65,29 @@ public class PostController {
 				.orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
 		return ResponseEntity.ok().body(post);
 	}
-//	@CookieValue
-	@PostMapping(value="/newpost")
-	public Post createPost(@Valid @RequestBody Post post) throws IOException {
+
+	@PostMapping(value="/newpost",produces=MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Post> createPost(@RequestParam("image") MultipartFile image) throws IOException {
 		
-//		ObjectMapper om = new ObjectMapper();
-//		byte[] image1 = om.writeValueAsBytes(post.getImage());
-//		post.setImage(image1);
-//		
-//		byte[] image = om.reader().forType(byte[].class).readValue(post.getImage());
-//		post.setImage(image);
-		post.getUser().getUserId();
-		
-//		
-		System.out.println(post);
-		
-		return postRepo.save(post);
+//		if(!image.isEmpty()) {
+//			byte[] bytes = image.getBytes();
+//			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("test1", )))
+		String filename = StringUtils.cleanPath(image.getOriginalFilename());
+		User user = new User();
+		user.setUserId(9);
+		Post post = new Post(3, user, "testing", image.getBytes());
+		return ResponseEntity.ok().body(post);
 		
 	}
+
 	@PutMapping("/post/{post_id}")
 	public ResponseEntity<Post> updatePost(@PathVariable(value = "post_id") int post_id,
 			@Valid @RequestBody Post postDetails) throws ResourceNotFoundException {
 		Post post = postRepo.findById(post_id)
 				.orElseThrow(() -> new ResourceNotFoundException("Post Not Found For This Id :: " + post_id));
 
-		post.setUser(postDetails.getUser());
+
+		post.setUserId(postDetails.getUserId());
 		post.setPost(postDetails.getPost());
 		post.setImage(postDetails.getImage());
 		post.setLikeCount(postDetails.getLikeCount());

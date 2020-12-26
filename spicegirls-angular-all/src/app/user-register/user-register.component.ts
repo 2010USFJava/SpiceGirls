@@ -10,18 +10,25 @@ import {Router} from '@angular/router';
 })
 export class UserRegisterComponent implements OnInit {
 
+
   user: User = new User();
   submitted = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
+
   ngOnInit(): void {
+  }
+  newLogin(): void {
+    this.submitted = false;
+
   }
   newUser(): void {
     this.submitted = false;
     this.user = new User();
   }
   save() {
+
     this.userService.registerUser(this.user).subscribe(data => {
       console.log(data)
       this.user = new User();
@@ -34,7 +41,8 @@ export class UserRegisterComponent implements OnInit {
       this.save();
     }
     goToList() {
-      this.router.navigate(['/users']);
+
+      this.router.navigate(['/login']);
     }
     
   }

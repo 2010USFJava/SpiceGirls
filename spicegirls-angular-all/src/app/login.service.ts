@@ -11,9 +11,11 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  getLogin(username: string, password:string): Observable<any>{
-    return this.http.post(`${this.baseUrl}/verify`, {username, password}, {withCredentials: true });
-  }  
+  getLogin(username:string, password:string):Observable<any>{
+    console.log("in service login" + username + password)
+    return this.http.post(`${this.baseUrl}/verify`, {username, password}, {withCredentials:true}) ;
+  }
+
 
   createLogin(login: Object): Observable<any>{
     return this.http.post(`${this.baseUrl}/add`, login);
