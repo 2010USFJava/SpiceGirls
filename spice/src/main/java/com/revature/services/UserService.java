@@ -45,7 +45,6 @@ public class UserService {
 		if(newUser.getFirstName()==null|| newUser.getLastName()==null) return null;
 		return uRepo.save(newUser);
 	}
-	
 	@Transactional
 	public User update(User updatedUser ) {
 		if(updatedUser.getFirstName().equals("")|| updatedUser.getLastName().equals("")) return null;

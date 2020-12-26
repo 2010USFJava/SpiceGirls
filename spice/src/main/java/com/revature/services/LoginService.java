@@ -13,6 +13,7 @@ import com.revature.models.Post;
 import com.revature.models.User;
 import com.revature.repository.LoginRepository;
 
+
 @Service
 public class LoginService {
 	
@@ -23,7 +24,8 @@ public class LoginService {
 		this.lRepo=lRepo;
 	}
 	
-	@Transactional(readOnly=true, isolation=Isolation.READ_COMMITTED)
+	@Transactional
+	(readOnly=true, isolation=Isolation.READ_COMMITTED)
 	public List<Login> getAll(){
 		return (List<Login>) lRepo.findAll();
 	}
@@ -38,19 +40,22 @@ public class LoginService {
 	public List<Login> getByUsername(String name) {
 		return (List<Login>) lRepo.findByUsername(name);
 	}
+
 	
-	@Transactional
-	public Login add(Login newLogin) {
-		if(newLogin.getUsername().isBlank()|| newLogin.getPassword().isBlank()) { return null;}
-		return lRepo.save(newLogin);
-	}
-	
-	@Transactional
-	public Login update(Login updatedLogin ) {
-		if(updatedLogin.getUsername().isBlank()|| updatedLogin.getPassword().isBlank()) { return null;}
-		return lRepo.save(updatedLogin);
-	}
-	
+    @Transactional
+    public Login add(Login newLogin) {
+        if(newLogin.getUsername()==null || newLogin.getPassword()==null) { return null;}
+        if(newLogin.getUsername().isEmpty()|| newLogin.getPassword().isEmpty()) {return null;}
+        return lRepo.save(newLogin);
+    }
+    
+    @Transactional
+    public Login update(Login updatedLogin ) {
+        if(updatedLogin.getUsername()==null || updatedLogin.getPassword()==null) { return null;}
+        if(updatedLogin.getUsername().isEmpty()|| updatedLogin.getPassword().isEmpty()) {return null;}
+        return lRepo.save(updatedLogin);
+    }
+
 	@Transactional
 	public boolean delete(int id) {
 		lRepo.deleteById(id);
@@ -58,5 +63,4 @@ public class LoginService {
 		if(login==null) return true;
 		return false;
 	}
-
 }

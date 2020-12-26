@@ -1,0 +1,44 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Post List</h2>
+  </div>
+  <div class="panel-body">
+    <div class="container-fliud" *ngFor="let post of posts | async">
+      <div class="container-image">
+        <!-- <div *ngIf="post.image"> -->
+          <img src="../assets/P2Icons/Cinnimon001.png" height="100px" style="width: 100px;" class="img-fluid" alt="">
+        <!-- </div> -->
+      </div>
+      <div>
+        <h3>{{post.post}}</h3>
+        <h4>{{post.likeCount}}</h4>
+      </div>
+      <div class="actions">
+        <button (click)="deletePost(post.pid)" class="btn btn-danger">Delete</button>
+        <button (click)="postDetails(post.pid)" class="btn btn-info" style="margin-left: 10px">Details</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Post</th>
+            <th>Image</th>
+            <th>likeCount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts | async">
+            <td>{{post.post}}</td>
+            <td>{{post.image}}</td>
+            <td>{{post.likeCount}}</td>
+            <td><button (click)="deletePost(post.pid)" class="btn btn-danger">Delete</button>
+                <button (click)="postDetails(post.pid)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+<!-- </div>
+  </div> -->

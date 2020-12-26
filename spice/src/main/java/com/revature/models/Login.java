@@ -10,7 +10,6 @@ import javax.persistence.Table;
 public class Login {
 	
 	@Id
-	@Column(name="user_id")
 	private int user_id;
 	@Column(name="username")
 	private String username;

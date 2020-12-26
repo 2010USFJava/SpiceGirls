@@ -1,1 +1,22 @@
-<p>user-login works!</p>
+<h2>Login</h2>
+<form name="login-form" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="username">Username</label>
+        <input type="text"
+          name="username" [(ngModel)]="login.username"
+            #username="ngModel" required />
+        <div>Username is required</div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password"
+          name="password" [(ngModel)]="login.password"
+            #password="ngModel" required />
+        <div>Password is required</div>
+    </div>
+    <div>
+        <button type=submit  value=login>Login</button>
+    </div>
+</form>
+
+<!-- (click) = "user-post()"  action= "feed.component.html-->
