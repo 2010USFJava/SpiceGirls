@@ -40,10 +40,6 @@ private baseUrl= 'http://localhost:8088/users'
   }
 
 
-  //updating functions
-  updateFirstName(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/update/first_name`, {user});
 
-  }
 
 }

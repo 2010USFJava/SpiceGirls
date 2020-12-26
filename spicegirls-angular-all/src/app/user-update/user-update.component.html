@@ -2,12 +2,11 @@
 
 
 <div>
-  <h1>User</h1>
-<h2>{{testUser.firstName}} {{testUser.lastName}}</h2>
+<h2>{{user.firstName}} {{user.lastName}}</h2>
 
 </div>
 <div style="width: 400px;">
-  <form name="update-first-name" (ngSubmit)="updateFirstName()">
+  <form name="update-first-name" (ngSubmit)="updateCompletly()">
     <div class="form-group">
       <label for="name">First Name</label>
       <input type="text" 
@@ -16,41 +15,30 @@
       required [(ngModel)]="user.firstName" 
       name="firstName">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
 
-  <form name="update-last-name" (ngSubmit)="updateLastName()">
     <div class="form-group">
       <label for="name">Last Name</label>
       <input type="text" class="form-control" id="lastName" required [(ngModel)]="user.lastName" name="lastName">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
 
   
-  <form name="update-bio" (ngSubmit)="updateBio()">
     <div class="form-group">
       <label for="name">Bio</label>
       <input type="text" class="form-control" id="bio" required [(ngModel)]="user.bio" name="bio">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
 
-  <form name="update-password" (ngSubmit)="updatePassword()">
+
     <div class="form-group">
       <label for="name">Password</label>
-      <input type="text" class="form-control" id="password" required [(ngModel)]="user.password" name="password">
+      <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
 
-  <form name="update-profile-picture" (ngSubmit)="updateProfilePicture()">
     <div class="form-group">
       <label for="name">Profile Picture</label>
-      <input type="text" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture">
+      <input type="file" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture">
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
 
 
 </div>
