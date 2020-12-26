@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Post } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/${pid}`);
   }  
 
-  createPost(post: Object): Observable<any>{
+  createPost(post: Object): Observable<Object>{
     return this.http.post(`${this.baseUrl}/newpost`, post);
   }
 
-  deletePost(pid:number): Observable<any>{
+  deletePost(pid:number): Observable<Object>{
     return this.http.delete(`${this.baseUrl}/${pid}`, { responseType: 'text' });
   }
 
