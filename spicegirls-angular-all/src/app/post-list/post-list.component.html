@@ -31,8 +31,12 @@
                   <img class="rounded-circle" width="45" src="../assets/P2Icons/Cinnimon001.png" alt="">
               </div>
               <div class="ml-2">
-                  <div class="h5 m-0">@Username</div>
-                  <div class="h7 text-muted">Fullname</div>
+                <div>
+                  <label><b>{{post.user.username}} </b></label>
+                </div>
+                <div>
+                  <label><b>{{post.user.firstName}} {{post.user.lastName}} </b></label>
+                </div>
               </div>
           </div>
           <div>
@@ -41,10 +45,11 @@
 
   </div>
   <div class="card-body">
-      <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+      
       <a class="card-link" href="#">
         <div class="viewer">
-        <img style="width: 128px; height: 128px;" src="{{post.image}}">
+        <img style="width: 300px; height: 300px;" [src]="post.image">
+        <!-- {{post.image}} -->
       </div>
         <!-- <img class="rounded-sqaure" width="200" style="justify-self: center; " src="../assets/P2Icons/Cinnimon001.png" alt=""> -->
       </a>

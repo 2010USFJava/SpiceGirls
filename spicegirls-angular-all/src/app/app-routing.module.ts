@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
@@ -15,6 +14,7 @@ import { UploadFileComponent } from './upload/upload-file/upload-file.component'
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { LikePostComponent } from './like-post/like-post.component';
+import { UserFriendProfileComponent } from './user-friend-profile/user-friend-profile.component';
 
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
@@ -30,6 +30,7 @@ const routes: Routes = [
   {path: 'update', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
+  {path: 'user-friend-profile', component: UserFriendProfileComponent},
 
 
   // {path: 'upload', component: UploadFileComponent},
@@ -41,7 +42,7 @@ const routes: Routes = [
   // Added Like url for development
   {path: 'like', component: LikePostComponent},
 
-  {path: '', redirectTo:'/post', pathMatch: 'full'}
+  {path: '', redirectTo:'/login', pathMatch: 'full'}
 ];
 
 @NgModule({

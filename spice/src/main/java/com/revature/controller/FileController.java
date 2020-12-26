@@ -33,11 +33,14 @@ public class FileController {
 	@Autowired
 	private S3Service s3service;
 	
+	private String endpoint;
+	
 	@PostMapping("/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file) {
 		String keyName = file.getOriginalFilename();
 		s3service.uploadFile(keyName, file);
-		return "Upload Successfully -> KeyName = " + keyName;
+		endpoint = "https://spice-sm.s3.us-east-2.amazonaws.com" + "/" + keyName;
+		return endpoint;
 	}
 	
 	@GetMapping("/download")
