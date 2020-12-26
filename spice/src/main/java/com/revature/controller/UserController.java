@@ -82,10 +82,11 @@ public class UserController {
 
 	}
 
-	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
-	public List<User> findByFirstName(String name) {
-		return this.uServ.getByFirstName(name); //get request to /users come here
-	}
+	//It does not appear that this is being used from angular. So I'm turning it off as a way to resolve the conflicts with /{user_id}
+//	@GetMapping(value="/{firstName}" , produces=MediaType.APPLICATION_JSON_VALUE) 
+//	public List<User> findByFirstName(String name) {
+//		return this.uServ.getByFirstName(name); //get request to /users come here
+//	}
 
 	@GetMapping(value="/profile", produces=MediaType.APPLICATION_JSON_VALUE) // url is /users/user_id#
 	public Optional<User> getUserById(@RequestParam int id) { //replacing getParameter step inside controller 

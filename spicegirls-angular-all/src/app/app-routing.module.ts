@@ -23,7 +23,8 @@ const routes: Routes = [
   {path: 'details/:pid', component: PostDetailsComponent},
 
   {path: 'profile/:id', component: UserProfileComponent},
-  {path: 'update/:id', component: UserUpdateComponent},
+  // {path: 'update/:id', component: UserUpdateComponent},
+  {path: 'update', component: UserUpdateComponent},
   {path: 'register' , component: UserRegisterComponent},
   {path: 'list', component: UserListComponent},
 
