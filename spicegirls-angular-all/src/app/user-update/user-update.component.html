@@ -1,21 +1,42 @@
 <h3>Update User</h3>
+
+<div>
+  <h1>User</h1>
+  <!-- <h2>{{user.firstName}}</h2> -->
+
+  <h1>Test User</h1>
+<h2>{{testUser.firstName}} {{testUser.lastName}}</h2>
+
+</div>
 <div style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
+  <form name="update-first-name" (ngSubmit)="updateFirstName()">
     <div class="form-group">
       <label for="name">First Name</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.firstName" name="firstName">
+      <input type="text" 
+      class="form-control" 
+      id="firstName" 
+      required [(ngModel)]="testUser.firstName" 
+      name="firstName">
     </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 
+  <form name="update-last-name" (ngSubmit)="updateLastName()">
     <div class="form-group">
       <label for="name">Last Name</label>
       <input type="text" class="form-control" id="lastName" required [(ngModel)]="user.lastName" name="lastName">
     </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 
+  
+  <form name="update-bio" (ngSubmit)="updateBio()">
     <div class="form-group">
       <label for="name">Bio</label>
       <input type="text" class="form-control" id="emailId" required [(ngModel)]="user.bio" name="bio">
     </div>
-
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
+
+
 </div>

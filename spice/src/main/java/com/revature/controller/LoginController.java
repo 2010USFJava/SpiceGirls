@@ -49,5 +49,54 @@ public class LoginController {
 		}
 		throw new ResourceNotFoundException("Login incorrect");
 	}
+	
+	
+	
+	//updating items
+	//Not all items may be changed in an update. It is the most simple to update them one by one. 
+	private User getUserByIdFromMasterList(User user) {
+		return  getAllUsers().get(user.getUserId());
+	}
+	
+	@PostMapping("/update/password")
+	public User updatePassword(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException{
+		User user = getUserByIdFromMasterList(updatedUser);
+		user.setPassword(updatedUser.getPassword());
+		final User updatedVersion = uRepo.save(user);
+		return updatedVersion;
+	}
+	
+	@PostMapping("/update/bio")
+	public User updateBio(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException{
+		User user = getUserByIdFromMasterList(updatedUser);
+		user.setBio(updatedUser.getBio());
+		final User updatedVersion = uRepo.save(user);
+		return updatedVersion;
+	}
+	
+	@PostMapping("/update/profile_image")
+	public User updateProfileImage(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException{
+		User user = getUserByIdFromMasterList(updatedUser);
+		user.setProfilePicture(updatedUser.getProfilePicture());
+		final User updatedVersion = uRepo.save(user);
+		return updatedVersion;
+	}
+	
+	@PostMapping("/update/first_name")
+	public User updateFirstName(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException{
+		User user = getUserByIdFromMasterList(updatedUser);
+		user.setFirstName(updatedUser.getFirstName());
+		final User updatedVersion = uRepo.save(user);
+		return updatedVersion;
+	}
+	
+	@PostMapping("/update/last_name")
+	public User updateLastName(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException{
+		User user = getUserByIdFromMasterList(updatedUser);
+		user.setLastName(updatedUser.getLastName());
+		final User updatedVersion = uRepo.save(user);
+		return updatedVersion;
+	}
+	
 
 }
