@@ -22,10 +22,10 @@ import com.revature.models.Post;
 public interface PostRepository extends JpaRepository<Post, Integer> {
 	
 	@Query(value = "SELECT * FROM posts WHERE user_id=:user_id", nativeQuery = true)
-	public List<Post> findByUserId(@Param("user_id") int user);
+	public List<Post> findByUserId(@Param("user_id") int user_id);
 	
 	@Transactional
 	@Modifying
 	@Query(value = "UPDATE posts SET like_count=like_count+1 WHERE post_id=:post_id", nativeQuery = true)
-	public void getLikes(@Param("post_id") int post);
+	public void getLikes(@Param("post_id") int post_id);
 }

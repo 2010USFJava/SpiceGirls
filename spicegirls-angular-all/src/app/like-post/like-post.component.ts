@@ -24,11 +24,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class LikePostComponent implements OnInit {
   imgSrc: string = '../../assets/P2Icons/chilli001.png'
   user: User;
-  post: Post;
+  //post: Post;
+  post: Post = new Post();
   postId: number;
   userId: number;
   key: string;
-  id:number;
+  id:string;
   
   //likes: Observable<Like[]>;
   posts: Observable<Post[]>;  
@@ -38,20 +39,26 @@ export class LikePostComponent implements OnInit {
 
   ngOnInit(): void {
     
+    this.cookieService.get('cookie');
+    this.id = this.cookieService.get('cookie');
 
-    this.userInfo();
-    this.postInfo();
     this.reloadData();
 
   }
   reloadData() {
-    //this.likes = this.likeService.getLikeList();
+
     this.posts = this.postService.getPostList();
+    // this.uploadService.getAllImages(this.key).subscribe(data => {
+    //   console.log(data);
+
+    // })
+    console.log(this.posts);
+    console.log("in reload data");
+
 
   }
  
-
-   createLike(id:number){
+   createLike(id:string){
     this.postService.createLike(this.personLiked, id).subscribe(
       data => {
         console.log(data);
@@ -60,34 +67,8 @@ export class LikePostComponent implements OnInit {
       error => console.log(error));
   }
 
-   userInfo(){
-    console.log(this.cookieService.get('cookie')); //prints out cookie (user id)
-    this.user = new User();
-    this.userId = this.route.snapshot.params['id'];
-    this.userId = Number(this.cookieService.get('cookie')); //turns cookie into number and id = cookie
-    console.log(this.userId);
-    this.userService.getUser(this.userId).subscribe(data => { //id is 1 when it gets here and prints all data
-      console.log(this.userId) //prints correct id number
-      console.log(data) //prints whole user table
-      
-      this.user = data; 
-      console.log(this.user) //prints all users
-    }, error => console.log(error));
-  }
-
-  postInfo(){
-    this.post = new Post();
-    this.postId = this.route.snapshot.params['postId'];
-    this.postService.getPostList().subscribe(data =>{
-      console.log(data)
-      this.post = data;
-      this.post.image = this.key;
-    }, error => console.log(error));
-
-  }
-
   gotoList(){
-    this.router.navigate(['/post']);
+    this.router.navigate(['/like']);
   }
 
 

@@ -28,7 +28,7 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/post`);
   }
 
-  createLike(like:Object, id:number):Observable<Object>{
+  createLike(like:Object, id:string):Observable<Object>{
     console.log(like);
     console.log("in create like");
     return this.http.post(`${this.baseUrl}/like/${id}`, like);
