@@ -1,5 +1,6 @@
+<!-- <div *ngIf="router.url != '/login'"> -->
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" routerLink="#">
+    <a class="navbar-brand" routerLink="/post">
         <img src="assets/P2Icons/Cinnimon002.png" height="70px" style="width: 70px;" class="img-fluid" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,8 +21,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">
-          <img src="assets/P2Icons/addpost1x.png" height="30px" style="width: 30px;" class="img-fluid" alt="">
+          <a class="nav-link" routerLink="/add">
+          <img src="assets/P2Icons/addpost1x.png" height="30px" style="width: 30px;" class="img-fluid" alt="" >
           </a>
         </li>
         <li class="nav-item">
@@ -39,14 +40,21 @@
             <img src="assets/P2Icons/settings.png" height="30px" style="width: 30px;" class="img-fluid" alt="">
           </a>
         </li>
+        
       </ul>
 
       <form class="form-inline my-2 my-lg-0" routerLink="/list">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search"aria-label="Search">
         <button class="btn my-2 my-sm-0" type="submit" >Search</button>
       </form>
+      <li>
+        <button class="btn my-2 my-sm-0" routerLink="/login">
+          Logout
+        </button>
+      </li>
     </div>
   </nav>
-
+<!-- 
+  
+ -->
 
 <router-outlet></router-outlet>

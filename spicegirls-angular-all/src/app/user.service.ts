@@ -14,7 +14,8 @@ private baseUrl= 'http://localhost:8088/users'
   constructor(private http: HttpClient) { }
 
   getUser(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/profile/?id=${id}`); //turms out it was going to the wrong function in sts. is now but not working
+    return this.http.get(`${this.baseUrl}/profile/?id=${id}`);
+
   }
   registerUser(user: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, user);

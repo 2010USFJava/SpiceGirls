@@ -6,19 +6,23 @@ import { Router } from '@angular/router';
 import { UploadService } from '../upload.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
+
 import { Like } from "../like";
+
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
+
 export class PostListComponent implements OnInit {
   posts: Observable<Post[]>;
   user: User;
-
+  displayPosts: Observable<Post[]>;
   personLiked: Like = new Like();
   id:string;
+
 
 
   constructor(private postService:PostService, private uploadService:UploadService, private router:Router, private userService: UserService ) { }

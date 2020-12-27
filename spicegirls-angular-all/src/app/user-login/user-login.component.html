@@ -1,3 +1,4 @@
+
 <mat-card>
     <mat-card-content>
         <form name="login-form" (ngSubmit)="onSubmit()">
@@ -33,6 +34,9 @@
                 <button mat-raised-button type=submit  value=login>Login</button>
             </div>
         </form>
+        <div>
+            <a routerLink="/user-register">Create a new account</a>
+        </div>
     </mat-card-content>
 </mat-card>
 

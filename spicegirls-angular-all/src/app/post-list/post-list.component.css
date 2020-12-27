@@ -6,7 +6,9 @@
 }
 
 h2{
-    -webkit-text-fill-color: white;
+
+    -webkit-text-fill-color: #731702;
+
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    align-content: center;
    justify-content: center;
@@ -14,8 +16,28 @@ h2{
    text-shadow: slategray;
    margin: 1% 0 0 35%;
    font-size: 3rem;
+
+   font-weight: bold;
 }
 
-.card-footer{
+.fa{
     -webkit-text-fill-color: #731702;
 }
+
+.viewer{
+    margin: 0 0 0 15%;
+}
+
+.card-text{
+    margin: 4% 0 0 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.card-header{
+    background-color: rgba(242, 184, 133, 0.5);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
+
+

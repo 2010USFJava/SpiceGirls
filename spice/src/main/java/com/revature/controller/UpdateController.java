@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+
+
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,22 +26,23 @@ public class UpdateController {
 	@Autowired
 	private UserRepository uRepo;
 
-	
+
 	@PostMapping("/retrieve_user")
-	public ResponseEntity<User> getUserById(@Valid @RequestBody int id){
-		User user= uRepo.findById(id).orElse(null);
-		if (user==null) {
+	public ResponseEntity<User> getUserById(@Valid @RequestBody int id) {
+		User user = uRepo.findById(id).orElse(null);
+		if (user == null) {
 			return null;
-		} 
-		
+		}
+
 		return ResponseEntity.ok().body(user);
 	}
-	
+
 	private User getByIdLocal(int id) {
 		return uRepo.getOne(id);
-		
+
 	}
-	
+
+
 	@PostMapping("/complete")
 	public ResponseEntity<User> completeUpdate(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException {
 		User user = getByIdLocal(updatedUser.getUserId());
@@ -46,11 +50,16 @@ public class UpdateController {
 		user.setLastName(updatedUser.getLastName());
 		user.setBio(updatedUser.getBio());
 		user.setPassword(updatedUser.getPassword());
-		user.setProfilePicture(updatedUser.getProfilePicture());
+
+
+		if (updatedUser.getProfilePicture() != null) {
+			System.out.println("Updating Profile");
+			String test = updatedUser.getProfilePicture();
+			String set = test.substring(1, test.length() - 1);
+			user.setProfilePicture(set);
+		} System.out.println("Not updating profile");
 		final User updatedVersion = uRepo.save(user);
-		return  ResponseEntity.ok(updatedVersion);
+		return ResponseEntity.ok(updatedVersion);
 	}
-	
-	
 
 }
