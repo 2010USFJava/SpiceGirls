@@ -35,7 +35,7 @@ public class User implements Serializable {
 	@Column(name="bio")
 	private String bio;
 	@Column(name="profile_pic")
-	private Byte[] profilePicture;
+	private String profilePicture;
 	@Column(name="username")
 	private String username;
 	@Column(name="password")
@@ -49,7 +49,7 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int user_id, String firstName, String lastName, String bio, Byte[] profilePicture, String username,
+	public User(int user_id, String firstName, String lastName, String bio, String profilePicture, String username,
 			String password) {
 		super();
 		this.user_id = user_id;
@@ -93,11 +93,11 @@ public class User implements Serializable {
 		this.bio = bio;
 	}
 
-	public Byte[] getProfilePicture() {
+	public String getProfilePicture() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(Byte[] profilePicture) {
+	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 
@@ -122,7 +122,7 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [user_id=" + user_id + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", bio=" + bio + ", profilePicture="
-				+ Arrays.toString(profilePicture) + ", posts=" + posts + "]";
+				+ profilePicture + ", posts=" + posts + "]";
 	}
 	
 	
