@@ -6,7 +6,7 @@
 
 </div>
 <div style="width: 400px;">
-  <form name="update-first-name" (ngSubmit)="updateCompletly()">
+  <form name="update-first-name" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">First Name</label>
       <input type="text" 
@@ -35,7 +35,10 @@
 
     <div class="form-group">
       <label for="name">Profile Picture</label>
-      <input type="file" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture">
+      <img class="profile-icon" [src]="user.profilePicture">
+      <!-- <img src={{user.profilePicture}} alt="user.profilePicture"> -->
+      <!-- <input type="file" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture">  -->
+  <input type="file" (change)="onFileSelected($event)" class="form-control" id="profile-picture" required [(ngModel)]="user.profilePicture" name="profile-picture" accept="image/jpeg, image/png">
     </div>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
