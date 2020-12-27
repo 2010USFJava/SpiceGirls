@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { Observable, forkJoin } from "rxjs";
 import { LikeService } from "../like.service";
 import { Like } from "../like";
 import { PostService } from "../post.service";
 import { Post } from "../post";
-
+import { User } from '../user';
+import { UserService} from '../user.service';
+import { CookieService } from 'ngx-cookie-service';
  /* Steps:  
   * [1] Grab Post Table & Read to screen
   * [2] Grab Likes Table & Read to screen
@@ -20,71 +22,57 @@ import { Post } from "../post";
 })
 
 export class LikePostComponent implements OnInit {
-   likes: Observable<Like[]>;
-   posts: Observable<Post[]>;
-   
-   personLiked: Like = new Like();
-   submitted = false;
+  imgSrc: string = '../../assets/P2Icons/chilli001.png'
+  user: User;
+  //post: Post;
+  post: Post = new Post();
+  postId: number;
+  userId: number;
+  key: string;
+  id:string;
   
-  constructor(private likeService:LikeService, private postService:PostService, private router: Router ) {}
+  //likes: Observable<Like[]>;
+  posts: Observable<Post[]>;  
+  personLiked: Like = new Like();
+  
+  constructor(private likeService:LikeService, private postService:PostService, private route: ActivatedRoute, private router: Router, private userService: UserService, private cookieService: CookieService ) {}
 
   ngOnInit(): void {
+    
+    this.cookieService.get('cookie');
+    this.id = this.cookieService.get('cookie');
+
     this.reloadData();
+
   }
   reloadData() {
-    this.likes = this.likeService.getLikeList();
+
     this.posts = this.postService.getPostList();
+    // this.uploadService.getAllImages(this.key).subscribe(data => {
+    //   console.log(data);
+
+    // })
+    console.log(this.posts);
+    console.log("in reload data");
+
 
   }
  
-   deleteLike(lid:number){
-     this.likeService.deleteLike(lid).subscribe(
-       data => {
-         console.log(data);
-         this.reloadData()
-       },
-       error => console.log(error));
-   }
-
-  //  newPersonLiked():void{
-  //   this.personLiked=new Like();
-  // }
-
-
-  createLike(postId:number, userId:number){
-    this.likeService.createLike(this.personLiked).subscribe(
-      
+   createLike(id:string){
+    this.postService.createLike(this.personLiked, id).subscribe(
       data => {
         console.log(data);
-        this.personLiked = new Like();
-      this.personLiked.postId;
-      this.personLiked.userId;
-        this.reloadData()
+       this.reloadData()
       },
       error => console.log(error));
   }
 
-
-
-  // updateLike(postId:number, userId:number){
-  //   this.likeService.updateLike(postId, userId).subscribe(
-  //     data => {
-  //       console.log(data);
-  //       this.reloadData()
-  //     },
-  //     error => console.log(error));
-
-  // }
-
-  // onSubmit() {
-  //   this.submitted = true;
-  //   this.save();
-
-  // }
- 
   gotoList(){
     this.router.navigate(['/like']);
   }
+
+
+
   
 
 }

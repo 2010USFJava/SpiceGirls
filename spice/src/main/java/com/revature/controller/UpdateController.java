@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.revature.exceptions.ResourceNotFoundException;
 import com.revature.models.User;
 import com.revature.repository.UserRepository;
@@ -20,6 +25,7 @@ public class UpdateController {
 
 	@Autowired
 	private UserRepository uRepo;
+
 
 	@PostMapping("/retrieve_user")
 	public ResponseEntity<User> getUserById(@Valid @RequestBody int id) {
@@ -36,6 +42,7 @@ public class UpdateController {
 
 	}
 
+
 	@PostMapping("/complete")
 	public ResponseEntity<User> completeUpdate(@Valid @RequestBody User updatedUser) throws ResourceNotFoundException {
 		User user = getByIdLocal(updatedUser.getUserId());
@@ -43,6 +50,7 @@ public class UpdateController {
 		user.setLastName(updatedUser.getLastName());
 		user.setBio(updatedUser.getBio());
 		user.setPassword(updatedUser.getPassword());
+
 
 		if (updatedUser.getProfilePicture() != null) {
 			System.out.println("Updating Profile");
