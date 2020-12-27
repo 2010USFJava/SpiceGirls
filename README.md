@@ -91,9 +91,39 @@ WorkSpace Applications:
 SCRUM : 
 - [Trello](https://trello.com/b/M0AWhrYz/spice-girlz)
 
-### Screenshots
+### Feature Screenshots
+- **User Profile**
 
-![Screenshot](docs/img/profile.png)
+![GitHub Logo](images/readme_img/profile1.png)
+
+- **Create Post**
+
+![GitHub Logo](images/readme_img/create_post1.png)
+
+- **User Post**
+
+![GitHub Logo](images/readme_img/hannah1.png)
+![GitHub Logo](images/readme_img/lebron1.png)
+
+- **Nav Bar**
+
+![GitHub Logo](images/readme_img/navbar.png)
+
+- **Search**
+
+![GitHub Logo](images/readme_img/search1.png)
+
+- **Like**
+
+![GitHub Logo](images/readme_img/like1.png)
+
+- **Update Info**
+
+
+![GitHub Logo](images/readme_img/update_info1.png)
+
+
+
 
 
 
