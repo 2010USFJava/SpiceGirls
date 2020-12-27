@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.revature.io.Logging;
+
 @Entity
 @Table(name="login")
 public class Login {
@@ -31,6 +33,7 @@ public class Login {
 		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
+		Logging.LogIt("info", "Login, "+ this.username + ", was updated");
 	}
 
 

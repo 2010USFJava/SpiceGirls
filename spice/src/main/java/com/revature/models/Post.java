@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import com.revature.io.Logging;
+
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -46,6 +48,7 @@ public class Post {
 		this.user = user;
 		this.post = post;
 		this.image = image;
+		Logging.LogIt("info", "Post, "+ this.post_id + ", was updated");
 	}
 
 	@Transient

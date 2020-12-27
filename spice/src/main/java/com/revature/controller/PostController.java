@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.hibernate.exception.GenericJDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,6 +55,7 @@ public class PostController {
 	}
 //	@CookieValue
 	@PostMapping(value="/newpost")
+
 	public Post createPost(@Valid @RequestBody Post post) throws IOException {
 
 		post.getUser().getUserId();
@@ -61,6 +63,7 @@ public class PostController {
 		String set = test.substring(1, test.length()-1);
 		post.setImage(set);
 			
+
 		System.out.println(post);
 		
 		return postRepo.save(post);
@@ -97,5 +100,20 @@ public class PostController {
 		response.put("Deleted", Boolean.TRUE);
 		return response;
 	}
+	
+	@PostMapping("/like/{post_id}")
+	public void getLikesById(@PathVariable(value = "post_id") int post_id) throws GenericJDBCException{
+		postRepo.getLikes(post_id);
+		try {
+			
+		}
+		catch(GenericJDBCException e){
+			e.getSQLException();
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

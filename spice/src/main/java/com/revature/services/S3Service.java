@@ -80,10 +80,7 @@ public class S3Service implements S3Repository{
 			      s3Client.putObject(bucketName, keyName, file.getInputStream(), metadata);
 			      endpoint = "https://spice-sm.s3.us-east-2.amazonaws.com" + "/" + keyName;
 			      objectKey = keyName;
-			      
-//			      Post post = new Post();
-//			      post.setImage(endpoint);
-//		      postCon.updatePost(post_id, postDetails);
+
 			      
 			    } catch(IOException ioe) {
 			      logger.error("IOException: " + ioe.getMessage());
