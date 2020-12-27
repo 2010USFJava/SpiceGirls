@@ -4,7 +4,8 @@
 <hr/>
 <div *ngIf="user">
   <div>
-    <img src={{user.profile_pic}} alt="Profile Picture" width="500" height="600">
+    <img class="profile-icon" [src]="user.profilePicture">
+    <!-- <img src={{user.profile_pic}} alt="Profile Picture" width="500" height="600"> -->
   </div>
   <div>
     <label><b>First Name: </b></label> {{user.firstName}}
