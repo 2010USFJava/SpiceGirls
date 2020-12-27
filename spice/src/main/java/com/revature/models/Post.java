@@ -1,19 +1,18 @@
 package com.revature.models;
 
-import java.util.Date;
-//<<<<<<< HEAD
+import java.beans.Transient;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CreationTimestamp;
 
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "posts")
@@ -21,40 +20,40 @@ public class Post {
 
 	@Id
     @Column(name="post_id")
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int post_id;
-    @Column(name="user_id")
-    private int user_id;
+	@ManyToOne()
+    @JoinColumn(name="user_id", referencedColumnName="user_id", updatable = false, nullable = false)
+    private User user;
     @Column(name="post")
     private String post;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    @Column(name="timestamp")
-    private Date timeStamp;
-    @Lob
-    @Column(name="image")
-    private byte[] image;
+    
+//    @Type(type="org.hibernate.type.BinaryType")
+    @Column(name="image")//, length=1000
+    private String image;
     @Column(name="like_count")
     private int likeCount;
 
 
 	public Post() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 
-	public Post(int post_id, int user_id, String post, Date timeStamp, byte[] image) {
+	public Post(int post_id, User user, String post, String image) {
 		super();
 		this.post_id = post_id;
-		this.user_id = user_id;
+		this.user = user;
 		this.post = post;
-		this.timeStamp = timeStamp;
 		this.image = image;
 	}
 
-
+	@Transient
+	public String getImagePath() {
+		if(image == null || user == null) return null;
+		return "/posts/" + user + "/" + image;
+	}
+	
 	public int getPostId() {
 		return post_id;
 	}
@@ -71,34 +70,26 @@ public class Post {
 		this.post = post;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
-	public Date getTimeStamp() {
-		return timeStamp;
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
-	}
-
-	public int getUserId() {
-		return user_id;
-	}
-
-	public void setUserId(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post_id + ", user_id=" + user_id + ", post=" + post + ", timeStamp=" + timeStamp
-				+ ", image=" + image + "]";
+		return "Post [post_id=" + post_id + ", user_id=" + user + ", image=" + image + "]";
 	}
 
 
@@ -108,7 +99,7 @@ public class Post {
 
 
 	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
+		this.likeCount = likeCount; 
 
 	}
 	

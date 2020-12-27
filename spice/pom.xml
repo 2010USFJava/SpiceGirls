@@ -18,6 +18,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<aws-java-sdk.version>1.11.750</aws-java-sdk.version>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Starters are a set of convenient dependency descriptorsthat 
@@ -74,14 +75,18 @@
 			<scope>test</scope>
 		</dependency>
 
-
-		<!--Extras -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+		<!-- Extra Dependencies Anna needs -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
-			<version>2.4.1</version>
 		</dependency>
+
+		<!-- Isa adding AWS S3 dependency -->
+	  	<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>${aws-java-sdk.version}</version>
+		</dependency> 
 
 	</dependencies>
 	<build>
