@@ -107,7 +107,7 @@ SCRUM :
 
 - **Nav Bar**
 
-![GitHub Logo](images/readme_img/navbar.png)
+![GitHub Logo](images/readme_img/navbar1.png)
 
 - **Search**
 
