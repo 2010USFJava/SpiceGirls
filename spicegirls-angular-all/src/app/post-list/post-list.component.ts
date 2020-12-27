@@ -7,13 +7,16 @@ import { UploadService } from '../upload.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
+
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit {
+
+export class PostListComponent implements OnInit{
   posts: Observable<Post[]>;
+  displayPosts: Observable<Post[]>;
   user: User;
   constructor(private postService:PostService, private uploadService:UploadService, private router:Router, private userService: UserService ) { }
 

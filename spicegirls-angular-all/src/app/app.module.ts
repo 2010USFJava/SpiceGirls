@@ -22,6 +22,7 @@ import { UploadFileComponent } from './upload/upload-file/upload-file.component'
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
+import { ReversepipePipe } from './reversepipe.pipe';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DetailsUploadComponent } from './upload/details-upload/details-upload.c
     FormUploadComponent,
     ListUploadComponent,
     DetailsUploadComponent,
+    ReversepipePipe,
     
   ],
   imports: [

@@ -8,13 +8,10 @@ import { PostListComponent } from './post-list/post-list.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
-import { FormUploadComponent } from './upload/form-upload/form-upload.component';
-import { UploadService } from './upload.service';
-import { UploadFileComponent } from './upload/upload-file/upload-file.component';
-import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
-import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { LikePostComponent } from './like-post/like-post.component';
 import { UserFriendProfileComponent } from './user-friend-profile/user-friend-profile.component';
+import { AppComponent } from './app.component';
+import { NONE_TYPE } from '@angular/compiler';
 
 const routes: Routes = [
   {path: 'user-register', component: UserRegisterComponent},
