@@ -8,7 +8,7 @@ The new Spice design will incorporate:
 
 This project also incorporates cookies, AWS, Jenkins, and Trello.
 
-### Project Setup
+### Project Setup (Spring Tool Suite, AWS, and DBeaver)
 - Clone this repository to your machine.
 - Set up your database in Amazon RDS through the AWS website.
 - Save the endpoint connection(url), the username, and the password used to set up your database.
@@ -22,18 +22,18 @@ This project also incorporates cookies, AWS, Jenkins, and Trello.
 
 ### Angular Instructions:
 
-[1] Import the `spicegirls-angular-all` folder into Visual Studio
-
-[2] Run the following terminal commands in Visual Studio's Terminal:
+- Import the `spicegirls-angular-all` folder into Visual Studio
+- Run the following terminal commands in Visual Studio's Terminal:
 
 Install dependencies:
 
-`npm install bootstrap jquery --save`
-`npm install @fortawesome/fontawesome-svg-core`
-`npm install @fortawesome/free-solid-svg-icons`
-`npm install @fortawesome/angular-fontawesome@0.5.0`
-`npm install ngx-cookie-service`
-
+```sh
+npm install bootstrap jquery --save
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-solid-svg-icons
+npm install @fortawesome/angular-fontawesome@0.5.0
+npm install ngx-cookie-service
+```
 Run application:
 
 `ng serve -o`
@@ -51,12 +51,12 @@ Each user should be able to:
 - Register, Login, and Logout
 - Reset their password
 - Upload a profile picture
-- odify their user information
+- Modify their user information
 - Create a post
 - View own profile and post
-- View others’ profile and post.
+- View others’ profile and post
 - Search other people
-- See everyone's feed.
+- See everyone's feed
 - Like someone’s post
 
 ### Technologies
@@ -90,3 +90,10 @@ WorkSpace Applications:
 ### SDLC:
 SCRUM : 
 - [Trello](https://trello.com/b/M0AWhrYz/spice-girlz)
+
+### Screenshots
+
+![Screenshot](docs/img/profile.png)
+
+
+
