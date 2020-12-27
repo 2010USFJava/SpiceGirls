@@ -73,7 +73,6 @@ export class CreatePostComponent implements OnInit {
   onFileSelected(event){
     console.log(event);
     this.selectedFile = event.target.files[0];
-    
   }
   //upload to s3 bucket
   upload(){
