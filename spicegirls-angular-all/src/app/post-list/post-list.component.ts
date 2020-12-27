@@ -7,6 +7,8 @@ import { UploadService } from '../upload.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
+import { Like } from "../like";
+
 
 @Component({
   selector: 'app-post-list',
@@ -14,10 +16,15 @@ import { UserService } from '../user.service';
   styleUrls: ['./post-list.component.css']
 })
 
-export class PostListComponent implements OnInit{
+export class PostListComponent implements OnInit {
   posts: Observable<Post[]>;
-  displayPosts: Observable<Post[]>;
   user: User;
+  displayPosts: Observable<Post[]>;
+  personLiked: Like = new Like();
+  id:string;
+
+
+
   constructor(private postService:PostService, private uploadService:UploadService, private router:Router, private userService: UserService ) { }
 
   ngOnInit(): void {
@@ -43,5 +50,17 @@ export class PostListComponent implements OnInit{
   postDetails(pid:number){
     this.router.navigate(['details', pid]);
   }
+
+  createLike(id:string){
+    this.postService.createLike(this.personLiked, id).subscribe(
+      data => {
+        console.log(data);
+       this.reloadData()
+      },
+      error => console.log(error));
+  }
+
+  
+
 
 }
