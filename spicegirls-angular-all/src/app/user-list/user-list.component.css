@@ -8,6 +8,33 @@ mat-form-field {
   display: block;
 }
 
+form{
+  max-width: 60%;
+  align-content: center;
+  align-items: center;
+  margin: 8% 0 0 20%;
+}
+.card{
+  max-width: 60%;
+  align-content: center;
+  align-items: center;
+  margin: 4% 0 0 20%;
+}
+table{
+  align-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
+}
+
+thead{
+  background-color: white;
+  -webkit-text-fill-color: #731702;
+}
+
+td{
+  background-color: white;
+  -webkit-text-fill-color: #731702;
+}
 
 h2,h3,h4,h5{
     align-items: center;
@@ -16,16 +43,19 @@ h2,h3,h4,h5{
 
 }
 button{
-    background-color: w#731702;
-    -webkit-text-fill-color: #f2b885;
-    -webkit-text-stroke: thin;
-    -webkit-text-stroke-color: #f2b885;
+
+  background-image: linear-gradient(120deg, #f2b885, #731702); 
+  border: none;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: thin;
+  -webkit-text-stroke-color: white;
 
 }
 .btn:hover{
-    background-image: linear-gradient(120deg, #f2b885, #731702); 
-    border: none;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke: thin;
-    -webkit-text-stroke-color: white;
+  background-image: none;
+  background-color: white;
+  -webkit-text-stroke: thin;
+  -webkit-text-fill-color: #731702;
+  -webkit-text-stroke-color: #731702;
 }
+

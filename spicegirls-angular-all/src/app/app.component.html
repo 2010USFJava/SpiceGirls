@@ -1,4 +1,4 @@
-<!-- <div *NgIf="route.url === '/login'"> -->
+<!-- <div *ngIf="router.url != '/login'"> -->
 <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" routerLink="/post">
         <img src="assets/P2Icons/Cinnimon002.png" height="70px" style="width: 70px;" class="img-fluid" alt="">
@@ -53,6 +53,8 @@
       </li>
     </div>
   </nav>
-<!-- </div> -->
+<!-- 
+  
+ -->
 
 <router-outlet></router-outlet>
