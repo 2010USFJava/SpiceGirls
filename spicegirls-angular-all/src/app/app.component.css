@@ -10,6 +10,8 @@
     margin: 0 0 0 30px;
 }
 
+
+
 .navbar{
 	background-color: #400601; 
     -webkit-text-fill-color: rgb(255, 255, 255);
@@ -32,4 +34,9 @@ button{
 }
 body{
     background-image: linear-gradient(120deg, #f2b885, #731702); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
 }
