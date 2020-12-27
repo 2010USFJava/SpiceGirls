@@ -17,6 +17,7 @@ export class UserUpdateService {
   }
 
   updateCompletly(user:Object): Observable<any>{
+    
     return this.http.post(`${this.baseUrl}/complete`, user);
   }
 
