@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.hibernate.exception.GenericJDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,7 +55,7 @@ public class PostController {
 	}
 //	@CookieValue
 	@PostMapping(value="/newpost")
-	public Post createPost(@Valid @RequestBody Post post) throws IOException {
+	public Post createPost(@Valid @RequestBody Post post, String endpoint) throws IOException {
 		
 //		ObjectMapper om = new ObjectMapper();
 //		byte[] image1 = om.writeValueAsBytes(post.getImage());
@@ -63,6 +64,7 @@ public class PostController {
 //		byte[] image = om.reader().forType(byte[].class).readValue(post.getImage());
 //		post.setImage(image);
 		post.getUser().getUserId();
+		post.getImage();
 		
 //		
 		System.out.println(post);
@@ -70,6 +72,12 @@ public class PostController {
 		return postRepo.save(post);
 		
 	}
+
+	
+//	public Post updatePostImage(String endpoint){
+//		
+//	}
+
 	@PutMapping("/post/{post_id}")
 	public ResponseEntity<Post> updatePost(@PathVariable(value = "post_id") int post_id,
 			@Valid @RequestBody Post postDetails) throws ResourceNotFoundException {
@@ -95,5 +103,20 @@ public class PostController {
 		response.put("Deleted", Boolean.TRUE);
 		return response;
 	}
+	
+	@PostMapping("/like/{post_id}")
+	public void getLikesById(@PathVariable(value = "post_id") int post_id) throws GenericJDBCException{
+		postRepo.getLikes(post_id);
+		try {
+			
+		}
+		catch(GenericJDBCException e){
+			e.getSQLException();
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

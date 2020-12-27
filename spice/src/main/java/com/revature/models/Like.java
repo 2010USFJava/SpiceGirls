@@ -15,11 +15,11 @@ public class Like {
 	
 	@Id
 	@Column(name="like_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int likeId;
-	@Column(name="post_id")
+	@Column(name="post_id", nullable=false)
 	private int postId;
-	@Column(name="user_id")
+	@Column(name="user_id", nullable=false)
 	private int userId;
 	
 	
