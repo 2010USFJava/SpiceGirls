@@ -23,19 +23,9 @@ export class LikeService {
     return this.http.delete(`${this.baseUrl}/${likeId}`,{responseType:'text'});
   }
 
-  createLike(like:Object):Observable<Object>{
+  makeLike(like:Object):Observable<Object>{
     return this.http.post(`${this.baseUrl}`, like);
   }
 
-  // updateLike(postId:number, value:any):Observable<Object>{
-  //   return this.http.put(`${this.baseUrl}/${postId}`,value);
-  // }
-  
-
-  
-
-  // getLikeByPid(uid:number):Observable<any>{
-  //   return this.http.get(`${this.baseUrl}/${userId}`);
-  // }
 
 }

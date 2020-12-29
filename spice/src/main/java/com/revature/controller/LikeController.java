@@ -40,14 +40,14 @@ public class LikeController {
 		return likeRepo.findAll();
 	    }
 	
-	@GetMapping("/list/{likeId}")
-	public ResponseEntity<Like> getLikeById(@PathVariable(value = "likeId") int likeId)
-			throws ResourceNotFoundException {
-		Like likeIdObj = likeRepo.findById(likeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Post not found for this likeId :: " + likeId));
-		return ResponseEntity.ok().body(likeIdObj);
-	}
-	
+//	@GetMapping("/list/{likeId}")
+//	public ResponseEntity<Like> getLikeById(@PathVariable(value = "likeId") int likeId)
+//			throws ResourceNotFoundException {
+//		Like likeIdObj = likeRepo.findById(likeId)
+//				.orElseThrow(() -> new ResourceNotFoundException("Post not found for this likeId :: " + likeId));
+//		return ResponseEntity.ok().body(likeIdObj);
+//	}
+//	
 //	@PutMapping("/list/{likeId}")
 //	public ResponseEntity<Like> updateEmployee(@PathVariable(value = "likeId") int likeId,
 //			@Valid @RequestBody Like employeeDetails) throws ResourceNotFoundException {
@@ -61,12 +61,13 @@ public class LikeController {
 //		return ResponseEntity.ok(updatedLikeIdObj);
 //	}
 	
-	@PostMapping("/list")
-	public Like createEmployee(@Valid @RequestBody Like likeIdObj) {
-		likeIdObj.setPostId(likeIdObj.getPostId());
-		likeIdObj.setUserId(likeIdObj.getUserId());
-		return likeRepo.save(likeIdObj);
-	}
+//	@PostMapping("/list")
+//	public Like createEmployee(@PathVariable(value = "likeId") int likeId, int userId) {
+//		likeIdObj.setPostId(likeIdObj.getPostId());
+//		likeIdObj.setUserId(likeIdObj.getUserId());
+//		return likeRepo.save(likeIdObj);
+//		
+//	}
 	
 	@DeleteMapping("/list/{likeId}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "likeId") int likeId)
@@ -78,6 +79,19 @@ public class LikeController {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
+	}
+	
+	@GetMapping("/list/{likeId}")
+	public ResponseEntity<Like> getLikeById(@PathVariable(value = "likeId") int likeId)
+			throws ResourceNotFoundException {
+		Like likeIdObj = likeRepo.findById(likeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Post not found for this likeId :: " + likeId));
+		return ResponseEntity.ok().body(likeIdObj);
+	}
+	
+	@PostMapping("/likes/{postId}")
+	public void getLikesByPostId(@PathVariable(value = "postId") int postId) {
+		
 	}
 	
 
