@@ -33,10 +33,10 @@ npm install @fortawesome/fontawesome-svg-core
 npm install @fortawesome/free-solid-svg-icons
 npm install @fortawesome/angular-fontawesome@0.5.0
 npm install ngx-cookie-service
+npm install
 ```
 Run application:
 ```sh
-npm install
 ng serve -o
 ```
 ### Login
