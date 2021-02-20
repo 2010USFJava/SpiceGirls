@@ -35,9 +35,10 @@ npm install @fortawesome/angular-fontawesome@0.5.0
 npm install ngx-cookie-service
 ```
 Run application:
-
-`ng serve -o`
-
+```sh
+npm install
+ng serve -o
+```
 ### Login
 - Sample login credential:
 
